@@ -1,6 +1,6 @@
 /*
  * ============================================================================
- * Copyright © 2002-2020 by Thomas Thrien.
+ * Copyright © 2002-2022 by Thomas Thrien.
  * All Rights Reserved.
  * ============================================================================
  * Licensed to the public under the agreements of the GNU Lesser General Public
@@ -14,11 +14,16 @@
  */
 
 /**
- *  Classes that are meant to support the writing of tests.
+ *  Classes that are meant to support the writing of JUnit tests.
  *
  *  @todo task.list
  */
+@API( status = STABLE, since = "0.0.1" )
 package org.tquadrat.foundation.testutil;
+
+import static org.apiguardian.api.API.Status.STABLE;
+
+import org.apiguardian.api.API;
 
 /*
  *  End of File

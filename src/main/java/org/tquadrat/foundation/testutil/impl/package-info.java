@@ -20,7 +20,13 @@
  *  the tests.
  */
 
+@API( status = STABLE, since = "0.0.1" )
 package org.tquadrat.foundation.testutil.impl;
+
+import static org.apiguardian.api.API.Status.STABLE;
+
+import org.apiguardian.api.API;
+
 /*
  *  End of File
  */
