@@ -207,7 +207,7 @@ public final class TestUtils
      *
      *  @param  s   The String to test.
      *  @return {@code true} if the given String reference is not
-     *      {@code null} and not the empty String and it contains other
+     *      {@code null} and not the empty String, and it contains other
      *      characters than just whitespace.
      *
      *  @see String#isBlank()

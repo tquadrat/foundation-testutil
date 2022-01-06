@@ -299,8 +299,8 @@
 <span class="source-line-no">286</span><span id="line-286">     *  Checks whether the machine, that runs the current test, has network</span>
 <span class="source-line-no">287</span><span id="line-287">     *  configured.</span>
 <span class="source-line-no">288</span><span id="line-288">     *</span>
-<span class="source-line-no">289</span><span id="line-289">     *  @return {@code true} if the current machine has network, {@code false}</span>
-<span class="source-line-no">290</span><span id="line-290">     *      otherwise.</span>
+<span class="source-line-no">289</span><span id="line-289">     *  @return {@code true} if the current machine has a network configured,</span>
+<span class="source-line-no">290</span><span id="line-290">     *      {@code false} otherwise.</span>
 <span class="source-line-no">291</span><span id="line-291">     */</span>
 <span class="source-line-no">292</span><span id="line-292">    @SuppressWarnings( "static-method" )</span>
 <span class="source-line-no">293</span><span id="line-293">    protected final boolean hasNetwork()</span>
@@ -469,104 +469,103 @@
 <span class="source-line-no">456</span><span id="line-456">        //---* All methods must be static *------------------------------------</span>
 <span class="source-line-no">457</span><span id="line-457">        final Collection&lt;Method&gt; methods = new ArrayList&lt;&gt;( asList( candidate.getMethods() ) );</span>
 <span class="source-line-no">458</span><span id="line-458">        methods.addAll( asList( candidate.getDeclaredMethods() ) );</span>
-<span class="source-line-no">459</span><span id="line-459">        //noinspection RedundantStreamOptionalCall</span>
-<span class="source-line-no">460</span><span id="line-460">        //noinspection SimplifyStreamApiCallChains</span>
-<span class="source-line-no">461</span><span id="line-461">        retValue &amp;= !methods.stream()</span>
-<span class="source-line-no">462</span><span id="line-462">            //---* Eliminate all methods from Object *-------------------------</span>
-<span class="source-line-no">463</span><span id="line-463">            .filter( method -&gt; !method.getDeclaringClass().equals( Object.class ) )</span>
-<span class="source-line-no">464</span><span id="line-464">            //---* Eliminate all static methods *------------------------------</span>
-<span class="source-line-no">465</span><span id="line-465">            .filter( method -&gt; !isStatic( method.getModifiers() ) )</span>
-<span class="source-line-no">466</span><span id="line-466">            //---* Map the remaining methods to their names *------------------</span>
-<span class="source-line-no">467</span><span id="line-467">            .map( Method::toString )</span>
-<span class="source-line-no">468</span><span id="line-468">            //---* Eliminate duplicates *--------------------------------------</span>
-<span class="source-line-no">469</span><span id="line-469">            .distinct()</span>
-<span class="source-line-no">470</span><span id="line-470">            //---* Print all remaining methods *-------------------------------</span>
-<span class="source-line-no">471</span><span id="line-471">            .peek( method -&gt; out.printf( "Method '%2$s' of class '%1$s' is not static\n", candidate.getName(), method ) )</span>
-<span class="source-line-no">472</span><span id="line-472">            /*</span>
-<span class="source-line-no">473</span><span id="line-473">             * This was just added to avoid a shortcut; otherwise, only the</span>
-<span class="source-line-no">474</span><span id="line-474">             * first offending method would be printed.</span>
-<span class="source-line-no">475</span><span id="line-475">             */</span>
-<span class="source-line-no">476</span><span id="line-476">            .sorted()</span>
-<span class="source-line-no">477</span><span id="line-477">            //---* Any entry will match - if any at all *----------------------</span>
-<span class="source-line-no">478</span><span id="line-478">            .anyMatch( m -&gt; true );</span>
-<span class="source-line-no">479</span><span id="line-479"></span>
-<span class="source-line-no">480</span><span id="line-480">        //---* No public or protected constructors are allowed *---------------</span>
-<span class="source-line-no">481</span><span id="line-481">        var constructors = candidate.getConstructors();</span>
-<span class="source-line-no">482</span><span id="line-482">        if( constructors.length &gt; 0 )</span>
-<span class="source-line-no">483</span><span id="line-483">        {</span>
-<span class="source-line-no">484</span><span id="line-484">            retValue = false;</span>
-<span class="source-line-no">485</span><span id="line-485">            out.printf( "Class '%s' has public constructor\n", candidate.getName() );</span>
-<span class="source-line-no">486</span><span id="line-486">        }</span>
-<span class="source-line-no">487</span><span id="line-487"></span>
-<span class="source-line-no">488</span><span id="line-488">        //---* Only one private constructor is allowed *-----------------------</span>
-<span class="source-line-no">489</span><span id="line-489">        constructors = candidate.getDeclaredConstructors();</span>
-<span class="source-line-no">490</span><span id="line-490">        if( constructors.length != 1 )</span>
-<span class="source-line-no">491</span><span id="line-491">        {</span>
-<span class="source-line-no">492</span><span id="line-492">            retValue = false;</span>
-<span class="source-line-no">493</span><span id="line-493">            out.printf( "Class '%s' defines more than one constructor\n", candidate.getName() );</span>
-<span class="source-line-no">494</span><span id="line-494">        }</span>
-<span class="source-line-no">495</span><span id="line-495"></span>
-<span class="source-line-no">496</span><span id="line-496">        /*</span>
-<span class="source-line-no">497</span><span id="line-497">         * This one and only constructor has to be the default constructor.</span>
-<span class="source-line-no">498</span><span id="line-498">         */</span>
-<span class="source-line-no">499</span><span id="line-499">        final var constructor = constructors [0];</span>
-<span class="source-line-no">500</span><span id="line-500">        if( constructor.getParameterTypes().length != 0 )</span>
-<span class="source-line-no">501</span><span id="line-501">        {</span>
-<span class="source-line-no">502</span><span id="line-502">            retValue = false;</span>
-<span class="source-line-no">503</span><span id="line-503">            out.printf( "Constructor of class '%s' is not the default constructor\n", candidate.getName() );</span>
-<span class="source-line-no">504</span><span id="line-504">        }</span>
-<span class="source-line-no">505</span><span id="line-505"></span>
-<span class="source-line-no">506</span><span id="line-506">        //---* The default constructor has to be private *---------------------</span>
-<span class="source-line-no">507</span><span id="line-507">        if( !isPrivate( constructor.getModifiers() ) )</span>
-<span class="source-line-no">508</span><span id="line-508">        {</span>
-<span class="source-line-no">509</span><span id="line-509">            retValue = false;</span>
-<span class="source-line-no">510</span><span id="line-510">            out.printf( "Constructor of class '%s' is not private\n", candidate.getName() );</span>
-<span class="source-line-no">511</span><span id="line-511">        }</span>
-<span class="source-line-no">512</span><span id="line-512"></span>
-<span class="source-line-no">513</span><span id="line-513">        /*</span>
-<span class="source-line-no">514</span><span id="line-514">         * The constructor has to throw an Error (in fact, a</span>
-<span class="source-line-no">515</span><span id="line-515">         * PrivateConstructorForStaticClassCalledError).</span>
-<span class="source-line-no">516</span><span id="line-516">         */</span>
-<span class="source-line-no">517</span><span id="line-517">        if( retValue )</span>
-<span class="source-line-no">518</span><span id="line-518">        {</span>
-<span class="source-line-no">519</span><span id="line-519">            final var message = "Constructor of class '%s' does not throw a PrivateConstructorForStaticClassCalledError\n";</span>
-<span class="source-line-no">520</span><span id="line-520"></span>
-<span class="source-line-no">521</span><span id="line-521">            /*</span>
-<span class="source-line-no">522</span><span id="line-522">             * To avoid exceptions, this part of the test will be executed</span>
-<span class="source-line-no">523</span><span id="line-523">             * only when the one and only constructor is the default</span>
-<span class="source-line-no">524</span><span id="line-524">             * constructor - meaning the return value is still true.</span>
-<span class="source-line-no">525</span><span id="line-525">             */</span>
-<span class="source-line-no">526</span><span id="line-526">            constructor.setAccessible( true );</span>
-<span class="source-line-no">527</span><span id="line-527">            try</span>
-<span class="source-line-no">528</span><span id="line-528">            {</span>
-<span class="source-line-no">529</span><span id="line-529">                constructor.newInstance();</span>
-<span class="source-line-no">530</span><span id="line-530">                retValue = false;</span>
-<span class="source-line-no">531</span><span id="line-531">                out.printf( message, candidate.getName() );</span>
-<span class="source-line-no">532</span><span id="line-532">            }</span>
-<span class="source-line-no">533</span><span id="line-533">            catch( final InvocationTargetException e )</span>
-<span class="source-line-no">534</span><span id="line-534">            {</span>
-<span class="source-line-no">535</span><span id="line-535">                final var t = e.getCause();</span>
-<span class="source-line-no">536</span><span id="line-536">                if( isNull( t ) || !t.getClass().getName().endsWith( "PrivateConstructorForStaticClassCalledError" ) )</span>
-<span class="source-line-no">537</span><span id="line-537">                {</span>
-<span class="source-line-no">538</span><span id="line-538">                    retValue = false;</span>
-<span class="source-line-no">539</span><span id="line-539">                    out.printf( message, candidate.getName() );</span>
-<span class="source-line-no">540</span><span id="line-540">                }</span>
-<span class="source-line-no">541</span><span id="line-541">            }</span>
-<span class="source-line-no">542</span><span id="line-542">            catch( final InstantiationException | IllegalAccessException | IllegalArgumentException e )</span>
-<span class="source-line-no">543</span><span id="line-543">            {</span>
-<span class="source-line-no">544</span><span id="line-544">                throw new RuntimeException( format( "Instantiation of class '%s' failed", candidate.getName() ), e );</span>
-<span class="source-line-no">545</span><span id="line-545">            }</span>
-<span class="source-line-no">546</span><span id="line-546">        }</span>
-<span class="source-line-no">547</span><span id="line-547"></span>
-<span class="source-line-no">548</span><span id="line-548">        //---* Done *----------------------------------------------------------</span>
-<span class="source-line-no">549</span><span id="line-549">        return retValue;</span>
-<span class="source-line-no">550</span><span id="line-550">    }   //  validateAsStaticClass()</span>
-<span class="source-line-no">551</span><span id="line-551">}</span>
-<span class="source-line-no">552</span><span id="line-552">//  class TestBaseClass</span>
-<span class="source-line-no">553</span><span id="line-553"></span>
-<span class="source-line-no">554</span><span id="line-554">/*</span>
-<span class="source-line-no">555</span><span id="line-555"> *  End of File</span>
-<span class="source-line-no">556</span><span id="line-556"> */</span>
+<span class="source-line-no">459</span><span id="line-459">        //noinspection SimplifyStreamApiCallChains</span>
+<span class="source-line-no">460</span><span id="line-460">        retValue &amp;= !methods.stream()</span>
+<span class="source-line-no">461</span><span id="line-461">            //---* Eliminate all methods from Object *-------------------------</span>
+<span class="source-line-no">462</span><span id="line-462">            .filter( method -&gt; !method.getDeclaringClass().equals( Object.class ) )</span>
+<span class="source-line-no">463</span><span id="line-463">            //---* Eliminate all static methods *------------------------------</span>
+<span class="source-line-no">464</span><span id="line-464">            .filter( method -&gt; !isStatic( method.getModifiers() ) )</span>
+<span class="source-line-no">465</span><span id="line-465">            //---* Map the remaining methods to their names *------------------</span>
+<span class="source-line-no">466</span><span id="line-466">            .map( Method::toString )</span>
+<span class="source-line-no">467</span><span id="line-467">            //---* Eliminate duplicates *--------------------------------------</span>
+<span class="source-line-no">468</span><span id="line-468">            .distinct()</span>
+<span class="source-line-no">469</span><span id="line-469">            //---* Print all remaining methods *-------------------------------</span>
+<span class="source-line-no">470</span><span id="line-470">            .peek( method -&gt; out.printf( "Method '%2$s' of class '%1$s' is not static\n", candidate.getName(), method ) )</span>
+<span class="source-line-no">471</span><span id="line-471">            /*</span>
+<span class="source-line-no">472</span><span id="line-472">             * This was just added to avoid a shortcut; otherwise, only the</span>
+<span class="source-line-no">473</span><span id="line-473">             * first offending method would be printed.</span>
+<span class="source-line-no">474</span><span id="line-474">             */</span>
+<span class="source-line-no">475</span><span id="line-475">            .sorted()</span>
+<span class="source-line-no">476</span><span id="line-476">            //---* Any entry will match - if any at all *----------------------</span>
+<span class="source-line-no">477</span><span id="line-477">            .anyMatch( m -&gt; true );</span>
+<span class="source-line-no">478</span><span id="line-478"></span>
+<span class="source-line-no">479</span><span id="line-479">        //---* No public or protected constructors are allowed *---------------</span>
+<span class="source-line-no">480</span><span id="line-480">        var constructors = candidate.getConstructors();</span>
+<span class="source-line-no">481</span><span id="line-481">        if( constructors.length &gt; 0 )</span>
+<span class="source-line-no">482</span><span id="line-482">        {</span>
+<span class="source-line-no">483</span><span id="line-483">            retValue = false;</span>
+<span class="source-line-no">484</span><span id="line-484">            out.printf( "Class '%s' has public constructor\n", candidate.getName() );</span>
+<span class="source-line-no">485</span><span id="line-485">        }</span>
+<span class="source-line-no">486</span><span id="line-486"></span>
+<span class="source-line-no">487</span><span id="line-487">        //---* Only one private constructor is allowed *-----------------------</span>
+<span class="source-line-no">488</span><span id="line-488">        constructors = candidate.getDeclaredConstructors();</span>
+<span class="source-line-no">489</span><span id="line-489">        if( constructors.length != 1 )</span>
+<span class="source-line-no">490</span><span id="line-490">        {</span>
+<span class="source-line-no">491</span><span id="line-491">            retValue = false;</span>
+<span class="source-line-no">492</span><span id="line-492">            out.printf( "Class '%s' defines more than one constructor\n", candidate.getName() );</span>
+<span class="source-line-no">493</span><span id="line-493">        }</span>
+<span class="source-line-no">494</span><span id="line-494"></span>
+<span class="source-line-no">495</span><span id="line-495">        /*</span>
+<span class="source-line-no">496</span><span id="line-496">         * This one and only constructor has to be the default constructor.</span>
+<span class="source-line-no">497</span><span id="line-497">         */</span>
+<span class="source-line-no">498</span><span id="line-498">        final var constructor = constructors [0];</span>
+<span class="source-line-no">499</span><span id="line-499">        if( constructor.getParameterTypes().length != 0 )</span>
+<span class="source-line-no">500</span><span id="line-500">        {</span>
+<span class="source-line-no">501</span><span id="line-501">            retValue = false;</span>
+<span class="source-line-no">502</span><span id="line-502">            out.printf( "Constructor of class '%s' is not the default constructor\n", candidate.getName() );</span>
+<span class="source-line-no">503</span><span id="line-503">        }</span>
+<span class="source-line-no">504</span><span id="line-504"></span>
+<span class="source-line-no">505</span><span id="line-505">        //---* The default constructor has to be private *---------------------</span>
+<span class="source-line-no">506</span><span id="line-506">        if( !isPrivate( constructor.getModifiers() ) )</span>
+<span class="source-line-no">507</span><span id="line-507">        {</span>
+<span class="source-line-no">508</span><span id="line-508">            retValue = false;</span>
+<span class="source-line-no">509</span><span id="line-509">            out.printf( "Constructor of class '%s' is not private\n", candidate.getName() );</span>
+<span class="source-line-no">510</span><span id="line-510">        }</span>
+<span class="source-line-no">511</span><span id="line-511"></span>
+<span class="source-line-no">512</span><span id="line-512">        /*</span>
+<span class="source-line-no">513</span><span id="line-513">         * The constructor has to throw an Error (in fact, a</span>
+<span class="source-line-no">514</span><span id="line-514">         * PrivateConstructorForStaticClassCalledError).</span>
+<span class="source-line-no">515</span><span id="line-515">         */</span>
+<span class="source-line-no">516</span><span id="line-516">        if( retValue )</span>
+<span class="source-line-no">517</span><span id="line-517">        {</span>
+<span class="source-line-no">518</span><span id="line-518">            final var message = "Constructor of class '%s' does not throw a PrivateConstructorForStaticClassCalledError\n";</span>
+<span class="source-line-no">519</span><span id="line-519"></span>
+<span class="source-line-no">520</span><span id="line-520">            /*</span>
+<span class="source-line-no">521</span><span id="line-521">             * To avoid exceptions, this part of the test will be executed</span>
+<span class="source-line-no">522</span><span id="line-522">             * only when the one and only constructor is the default</span>
+<span class="source-line-no">523</span><span id="line-523">             * constructor - meaning the return value is still true.</span>
+<span class="source-line-no">524</span><span id="line-524">             */</span>
+<span class="source-line-no">525</span><span id="line-525">            constructor.setAccessible( true );</span>
+<span class="source-line-no">526</span><span id="line-526">            try</span>
+<span class="source-line-no">527</span><span id="line-527">            {</span>
+<span class="source-line-no">528</span><span id="line-528">                constructor.newInstance();</span>
+<span class="source-line-no">529</span><span id="line-529">                retValue = false;</span>
+<span class="source-line-no">530</span><span id="line-530">                out.printf( message, candidate.getName() );</span>
+<span class="source-line-no">531</span><span id="line-531">            }</span>
+<span class="source-line-no">532</span><span id="line-532">            catch( final InvocationTargetException e )</span>
+<span class="source-line-no">533</span><span id="line-533">            {</span>
+<span class="source-line-no">534</span><span id="line-534">                final var t = e.getCause();</span>
+<span class="source-line-no">535</span><span id="line-535">                if( isNull( t ) || !t.getClass().getName().endsWith( "PrivateConstructorForStaticClassCalledError" ) )</span>
+<span class="source-line-no">536</span><span id="line-536">                {</span>
+<span class="source-line-no">537</span><span id="line-537">                    retValue = false;</span>
+<span class="source-line-no">538</span><span id="line-538">                    out.printf( message, candidate.getName() );</span>
+<span class="source-line-no">539</span><span id="line-539">                }</span>
+<span class="source-line-no">540</span><span id="line-540">            }</span>
+<span class="source-line-no">541</span><span id="line-541">            catch( final InstantiationException | IllegalAccessException | IllegalArgumentException e )</span>
+<span class="source-line-no">542</span><span id="line-542">            {</span>
+<span class="source-line-no">543</span><span id="line-543">                throw new RuntimeException( format( "Instantiation of class '%s' failed", candidate.getName() ), e );</span>
+<span class="source-line-no">544</span><span id="line-544">            }</span>
+<span class="source-line-no">545</span><span id="line-545">        }</span>
+<span class="source-line-no">546</span><span id="line-546"></span>
+<span class="source-line-no">547</span><span id="line-547">        //---* Done *----------------------------------------------------------</span>
+<span class="source-line-no">548</span><span id="line-548">        return retValue;</span>
+<span class="source-line-no">549</span><span id="line-549">    }   //  validateAsStaticClass()</span>
+<span class="source-line-no">550</span><span id="line-550">}</span>
+<span class="source-line-no">551</span><span id="line-551">//  class TestBaseClass</span>
+<span class="source-line-no">552</span><span id="line-552"></span>
+<span class="source-line-no">553</span><span id="line-553">/*</span>
+<span class="source-line-no">554</span><span id="line-554"> *  End of File</span>
+<span class="source-line-no">555</span><span id="line-555"> */</span>
 
 
 

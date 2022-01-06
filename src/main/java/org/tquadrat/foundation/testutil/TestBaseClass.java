@@ -286,8 +286,8 @@ public abstract class TestBaseClass extends EasyMockSupport
      *  Checks whether the machine, that runs the current test, has network
      *  configured.
      *
-     *  @return {@code true} if the current machine has network, {@code false}
-     *      otherwise.
+     *  @return {@code true} if the current machine has a network configured,
+     *      {@code false} otherwise.
      */
     @SuppressWarnings( "static-method" )
     protected final boolean hasNetwork()
@@ -456,7 +456,6 @@ public abstract class TestBaseClass extends EasyMockSupport
         //---* All methods must be static *------------------------------------
         final Collection<Method> methods = new ArrayList<>( asList( candidate.getMethods() ) );
         methods.addAll( asList( candidate.getDeclaredMethods() ) );
-        //noinspection RedundantStreamOptionalCall
         //noinspection SimplifyStreamApiCallChains
         retValue &= !methods.stream()
             //---* Eliminate all methods from Object *-------------------------
