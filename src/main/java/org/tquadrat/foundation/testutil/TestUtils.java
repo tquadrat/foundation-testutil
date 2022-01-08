@@ -46,7 +46,7 @@ import org.apiguardian.api.API;
  *  Some methods that are useful in the context of testing.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: TestUtils.java 840 2021-01-10 21:37:03Z tquadrat $
+ *  @version $Id: TestUtils.java 980 2022-01-06 15:29:19Z tquadrat $
  *  @since 0.1.0
  *
  *  @UMLGraph.link
