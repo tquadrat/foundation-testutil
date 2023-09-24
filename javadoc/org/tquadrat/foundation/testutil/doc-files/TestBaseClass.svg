@@ -7,7 +7,7 @@
      version='1.1'
      baseProfile='full'
      width='588.000'
-     height='1284.000'>
+     height='1295.000'>
     <defs>
         <style><![CDATA[
             line
@@ -205,7 +205,7 @@
         </symbol>
         <clipPath id='ID000002'>
             <rect class='externalClass'
-                  height='403.000'
+                  height='414.000'
                   width='538.000'
                   x='0.000'
                   y='0.000'/>
@@ -216,7 +216,7 @@
                     <rect x='0.000'
                           y='0.000'
                           width='538.000'
-                          height='403.000'
+                          height='414.000'
                           class='externalClass'/>
                     <line x1='0.000'
                           y1='17.000'
@@ -300,6 +300,9 @@
                     <text x='5.000'
                           y='399.000'
                           class='static'>+ getMockedClass(arg0:T):java.lang.Class&lt;R&gt;</text>
+                    <text x='5.000'
+                          y='410.000'
+                          class='static'>+ isAMock(arg0:java.lang.Object):boolean</text>
                 </g>
             </g>
         </symbol>
@@ -361,7 +364,7 @@
         </symbol>
     </defs>
     <path class='inheritance'
-          d='M294.000,800.000 L294.000,700.000'
+          d='M294.000,811.000 L294.000,711.000'
           marker-end='url(#inheritance)'/>
     <path class='inheritance'
           d='M294.000,297.000 L294.000,197.000'
@@ -373,6 +376,6 @@
          y='297.000'
          xlink:href='#org.easymock.EasyMockSupport'/>
     <use x='94.000'
-         y='800.000'
+         y='811.000'
          xlink:href='#org.tquadrat.foundation.testutil.TestBaseClass'/>
 </svg>
