@@ -1,6 +1,6 @@
 /*
  * ============================================================================
- *  Copyright © 2002-2021 by Thomas Thrien.
+ *  Copyright © 2002-2023 by Thomas Thrien.
  *  All Rights Reserved.
  * ============================================================================
  *  Licensed to the public under the agreements of the GNU Lesser General Public
@@ -18,9 +18,12 @@
 package org.tquadrat.foundation.testutil.impl;
 
 import static java.util.Objects.nonNull;
+import static org.apiguardian.api.API.Status.STABLE;
 import static org.tquadrat.foundation.testutil.TestUtils.requireNotEmptyArgument;
 
 import javax.lang.model.element.Name;
+
+import org.apiguardian.api.API;
 
 /**
  *  An implementation of
@@ -28,8 +31,10 @@ import javax.lang.model.element.Name;
  *  for test purposes.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: NameTestImpl.java 895 2021-04-05 12:40:34Z tquadrat $
+ *  @version $Id: NameTestImpl.java 1074 2023-10-02 12:05:06Z tquadrat $
+ *  @since 0.0.1
  */
+@API( status = STABLE, since = "0.0.1" )
 public class NameTestImpl implements Name
 {
         /*------------*\
@@ -81,8 +86,7 @@ public class NameTestImpl implements Name
     public final boolean equals( final Object obj )
     {
         var retValue = this == obj;
-        //noinspection TypeMayBeWeakened
-        if( !retValue && (obj instanceof Name name ) )
+        if( !retValue && (obj instanceof final Name name ) )
         {
             retValue = contentEquals( name );
         }

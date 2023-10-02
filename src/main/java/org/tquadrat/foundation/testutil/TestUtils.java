@@ -1,6 +1,6 @@
 /*
  * ============================================================================
- * Copyright © 2002-2021 by Thomas Thrien.
+ * Copyright © 2002-2023 by Thomas Thrien.
  * All Rights Reserved.
  * ============================================================================
  *
@@ -46,7 +46,7 @@ import org.apiguardian.api.API;
  *  Some methods that are useful in the context of testing.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: TestUtils.java 980 2022-01-06 15:29:19Z tquadrat $
+ *  @version $Id: TestUtils.java 1074 2023-10-02 12:05:06Z tquadrat $
  *  @since 0.1.0
  *
  *  @UMLGraph.link
@@ -158,20 +158,20 @@ public final class TestUtils
     /**
      *  Tests if the given String is {@code null} or the empty String.
      *
-     *  @param  s   The String to test.
+     *  @param  input   The String to test.
      *  @return {@code true} if the given String reference is
      *      {@code null} or the empty String.
      *
      *  @since 0.1.0
      */
     @API( status = STABLE, since = "0.1.0" )
-    public static final boolean isEmpty( final CharSequence s ) { return isNull( s ) || s.isEmpty(); }
+    public static final boolean isEmpty( final CharSequence input ) { return isNull( input ) || input.isEmpty(); }
 
     /**
      *  Tests if the given String is {@code null}, the empty String, or just
      *  containing whitespace.
      *
-     *  @param  s   The String to test.
+     *  @param  input   The String to test.
      *  @return {@code true} if the given String reference is not
      *      {@code null} and not the empty String.
      *
@@ -180,9 +180,9 @@ public final class TestUtils
      *  @since 0.1.0
      */
     @API( status = STABLE, since = "0.1.0" )
-    public static final boolean isEmptyOrBlank( final CharSequence s )
+    public static final boolean isEmptyOrBlank( final CharSequence input )
     {
-        final var retValue = isNull( s ) || s.toString().isBlank();
+        final var retValue = isNull( input ) || input.toString().isBlank();
 
         //---* Done *----------------------------------------------------------
         return retValue;
@@ -192,20 +192,20 @@ public final class TestUtils
      *  Tests if the given String is not {@code null} and not the empty
      *  String.
      *
-     *  @param  s   The String to test.
+     *  @param  input   The String to test.
      *  @return {@code true} if the given String reference is not
      *      {@code null} and not the empty String.
      *
      *  @since 0.1.0
      */
     @API( status = STABLE, since = "0.1.0" )
-    public static final boolean isNotEmpty( final CharSequence s ) { return nonNull( s ) && !s.isEmpty(); }
+    public static final boolean isNotEmpty( final CharSequence input ) { return nonNull( input ) && !input.isEmpty(); }
 
     /**
      *  Tests if the given String is not {@code null}, not the empty String,
      *  and that it contains other characters than just whitespace.
      *
-     *  @param  s   The String to test.
+     *  @param  input   The String to test.
      *  @return {@code true} if the given String reference is not
      *      {@code null} and not the empty String, and it contains other
      *      characters than just whitespace.
@@ -215,9 +215,9 @@ public final class TestUtils
      *  @since 0.1.0
      */
     @API( status = STABLE, since = "0.1.0" )
-    public static final boolean isNotEmptyOrBlank( final CharSequence s )
+    public static final boolean isNotEmptyOrBlank( final CharSequence input )
     {
-        final var retValue = nonNull( s ) && !s.toString().isBlank();
+        final var retValue = nonNull( input ) && !input.toString().isBlank();
 
         //---* Done *----------------------------------------------------------
         return retValue;
@@ -249,6 +249,7 @@ public final class TestUtils
      *  @author Arun Mammen Thomas
      *  @modified Thomas Thrien - thomas.thrien@tquadrat.org
      */
+    @SuppressWarnings( "BooleanMethodNameMustStartWithQuestion" )
     @API( status = STABLE, since = "0.0.5" )
     public static final boolean reflectionEquals( final Object lhs, final Object rhs )
     {
@@ -284,6 +285,7 @@ public final class TestUtils
      *  @author Arun Mammen Thomas
      *  @modified Thomas Thrien - thomas.thrien@tquadrat.org
      */
+    @SuppressWarnings( "BooleanMethodNameMustStartWithQuestion" )
     @API( status = STABLE, since = "0.0.5" )
     public static final boolean reflectionEquals( final Object lhs, final Object rhs, final Collection<String> excludeFields )
     {
@@ -318,6 +320,7 @@ public final class TestUtils
      *  @author Arun Mammen Thomas
      *  @modified Thomas Thrien - thomas.thrien@tquadrat.org
      */
+    @SuppressWarnings( "BooleanMethodNameMustStartWithQuestion" )
     @API( status = STABLE, since = "0.0.5" )
     public static final boolean reflectionEquals( final Object lhs, final Object rhs, final String [] excludeFields )
     {
@@ -354,6 +357,7 @@ public final class TestUtils
      *  @author Arun Mammen Thomas
      *  @modified Thomas Thrien - thomas.thrien@tquadrat.org
      */
+    @SuppressWarnings( "BooleanMethodNameMustStartWithQuestion" )
     @API( status = STABLE, since = "0.0.5" )
     public static final boolean reflectionEquals( final Object lhs, final Object rhs, final boolean testTransients )
     {
@@ -394,6 +398,7 @@ public final class TestUtils
      *  @author Arun Mammen Thomas
      *  @modified Thomas Thrien - thomas.thrien@tquadrat.org
      */
+    @SuppressWarnings( "BooleanMethodNameMustStartWithQuestion" )
     @API( status = STABLE, since = "0.0.5" )
     public static final boolean reflectionEquals( final Object lhs, final Object rhs, final boolean testTransients, final Class<?> reflectUpToClass )
     {
@@ -436,6 +441,7 @@ public final class TestUtils
      *  @author Arun Mammen Thomas
      *  @modified Thomas Thrien - thomas.thrien@tquadrat.org
      */
+    @SuppressWarnings( {"BooleanMethodNameMustStartWithQuestion", "OverlyComplexMethod"} )
     @API( status = STABLE, since = "0.0.5" )
     public static final boolean reflectionEquals( final Object lhs, final Object rhs, final boolean testTransients, final Class<?> reflectUpToClass, final String [] excludeFields )
     {
@@ -483,7 +489,7 @@ public final class TestUtils
                         retValue = testReflective( lhs, rhs, testClass, testTransients, excluded );
                     }
                 }
-                catch( @SuppressWarnings( "unused" ) final IllegalArgumentException e )
+                catch( final IllegalArgumentException ignored )
                 {
                     /*
                      * In this case, we tried to test a subclass vs. a
@@ -607,7 +613,7 @@ public final class TestUtils
      *      {@code null}.
      *  @throws IllegalArgumentException   {@code name} or {@code a} is empty.
      */
-    @SuppressWarnings( "ProhibitedExceptionThrown" )
+    @SuppressWarnings( {"ProhibitedExceptionThrown", "OverlyComplexMethod"} )
     @API( status = STABLE, since = "0.0.5" )
     public static final <T> T requireNotEmptyArgument( final T a, final String name )
     {
@@ -628,7 +634,7 @@ public final class TestUtils
 
         //---* Check the type *------------------------------------------------
         //noinspection IfStatementWithTooManyBranches
-        if( a instanceof CharSequence charSequence )
+        if( a instanceof final CharSequence charSequence )
         {
             if( charSequence.isEmpty() )
             {
@@ -642,31 +648,31 @@ public final class TestUtils
                 throw new IllegalArgumentException( format( "Argument '%s' is empty", name ) );
             }
         }
-        else if( a instanceof Collection<?> collection )
+        else if( a instanceof final Collection<?> collection )
         {
             if( collection.isEmpty() )
             {
                 throw new IllegalArgumentException( format( "Argument '%s' is empty", name ) );
             }
         }
-        else if( a instanceof Map<?,?> map )
+        else if( a instanceof final Map<?,?> map )
         {
             if( map.isEmpty() )
             {
                 throw new IllegalArgumentException( format( "Argument '%s' is empty", name ) );
             }
         }
-        else if( a instanceof Enumeration<?> enumeration )
+        else if( a instanceof final Enumeration<?> enumeration )
         {
             if( !enumeration.hasMoreElements() )
             {
                 throw new IllegalArgumentException( format( "Argument '%s' is empty", name ) );
             }
         }
-        else if( a instanceof Stream<?> stream )
+        else if( a instanceof final Stream<?> stream )
         {
-            final var o = stream.findAny();
-            if( o.isEmpty() )
+            final var any = stream.findAny();
+            if( any.isEmpty() )
             {
                 throw new IllegalArgumentException( format( "Argument '%s' is empty", name ) );
             }
@@ -696,16 +702,16 @@ public final class TestUtils
         var retValue = true;
         for( var i = 0; (i < fields.length) && retValue; ++i )
         {
-            final var f = fields [i];
-            final var modifiers = f.getModifiers();
-            if( !excludeFields.contains( f.getName() )
-                && (f.getName().indexOf( '$' ) == -1)
+            final var field = fields [i];
+            final var modifiers = field.getModifiers();
+            if( !excludeFields.contains( field.getName() )
+                && (field.getName().indexOf( '$' ) == -1)
                 && (useTransients || !isTransient( modifiers ))
                 && (!isStatic( modifiers )) )
             {
                 try
                 {
-                    retValue = deepEquals( f.get( lhs ), f.get( rhs ) );
+                    retValue = deepEquals( field.get( lhs ), field.get( rhs ) );
                 }
                 catch( final IllegalAccessException e )
                 {
@@ -797,7 +803,7 @@ public final class TestUtils
      *  @see java.util.Arrays#deepToString(Object[])
      *  @see java.util.Locale#getDefault()
      */
-    @SuppressWarnings( {"IfStatementWithTooManyBranches", "ChainOfInstanceofChecks"} )
+    @SuppressWarnings( {"IfStatementWithTooManyBranches", "ChainOfInstanceofChecks", "OverlyComplexMethod"} )
     @API( status = STABLE, since = "0.0.5" )
     public static final String toString( final Object object, final String nullDefault )
     {

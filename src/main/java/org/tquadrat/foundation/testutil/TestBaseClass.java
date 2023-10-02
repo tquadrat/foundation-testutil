@@ -1,6 +1,6 @@
 /*
  * ============================================================================
- * Copyright © 2002-2021 by Thomas Thrien.
+ * Copyright © 2002-2023 by Thomas Thrien.
  * All Rights Reserved.
  * ============================================================================
  * Licensed to the public under the agreements of the GNU Lesser General Public
@@ -64,12 +64,12 @@ import org.junit.jupiter.api.BeforeEach;
  *  A base class for JUnit test classes.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: TestBaseClass.java 980 2022-01-06 15:29:19Z tquadrat $
+ *  @version $Id: TestBaseClass.java 1074 2023-10-02 12:05:06Z tquadrat $
  *  @since 0.0.5
  *
  *  @UMLGraph.link
  */
-@SuppressWarnings( {"AbstractClassExtendsConcreteClass", "AbstractClassWithoutAbstractMethods"} )
+@SuppressWarnings( {"AbstractClassExtendsConcreteClass", "AbstractClassWithoutAbstractMethods", "UseOfSystemOutOrSystemErr"} )
 @API( status = STABLE, since = "0.0.5" )
 public abstract class TestBaseClass extends EasyMockSupport
 {
@@ -148,6 +148,7 @@ public abstract class TestBaseClass extends EasyMockSupport
     /**
      *  The system properties.
      */
+    @SuppressWarnings( {"StaticCollection", "StaticVariableMayNotBeInitialized"} )
     private static Properties m_SystemProperties;
 
         /*--------------*\
@@ -247,6 +248,7 @@ public abstract class TestBaseClass extends EasyMockSupport
             if( !liveThreads.isEmpty() )
             {
                 final var failed = new AtomicBoolean( false );
+                @SuppressWarnings( "OverlyLongLambda" )
                 final var message = liveThreads.stream()
                     .filter( Thread::isAlive )
                     .map( t ->
@@ -297,7 +299,7 @@ public abstract class TestBaseClass extends EasyMockSupport
         {
             retValue = getNetworkInterfaces().hasMoreElements();
         }
-        catch( @SuppressWarnings( "unused" ) final SocketException e )
+        catch( final SocketException ignored )
         {
             retValue = false;
         }
@@ -441,7 +443,7 @@ public abstract class TestBaseClass extends EasyMockSupport
      *  @return {@code true} if the class is in fact static, {@code false}
      *      otherwise.
      */
-    @SuppressWarnings( {"ProhibitedExceptionThrown", "RedundantStreamOptionalCall"} )
+    @SuppressWarnings( {"ProhibitedExceptionThrown", "RedundantStreamOptionalCall", "OverlyComplexMethod"} )
     protected final boolean validateAsStaticClass( final Class<?> candidate )
     {
         skipThreadTest();
@@ -457,7 +459,7 @@ public abstract class TestBaseClass extends EasyMockSupport
         final Collection<Method> methods = new ArrayList<>( asList( candidate.getMethods() ) );
         methods.addAll( asList( candidate.getDeclaredMethods() ) );
         //noinspection SimplifyStreamApiCallChains
-        retValue &= !methods.stream()
+        retValue = retValue && !methods.stream()
             //---* Eliminate all methods from Object *-------------------------
             .filter( method -> !method.getDeclaringClass().equals( Object.class ) )
             //---* Eliminate all static methods *------------------------------
@@ -474,7 +476,7 @@ public abstract class TestBaseClass extends EasyMockSupport
              */
             .sorted()
             //---* Any entry will match - if any at all *----------------------
-            .anyMatch( m -> true );
+            .anyMatch( $ -> true );
 
         //---* No public or protected constructors are allowed *---------------
         var constructors = candidate.getConstructors();
@@ -531,8 +533,8 @@ public abstract class TestBaseClass extends EasyMockSupport
             }
             catch( final InvocationTargetException e )
             {
-                final var t = e.getCause();
-                if( isNull( t ) || !t.getClass().getName().endsWith( "PrivateConstructorForStaticClassCalledError" ) )
+                final var throwable = e.getCause();
+                if( isNull( throwable ) || !throwable.getClass().getName().endsWith( "PrivateConstructorForStaticClassCalledError" ) )
                 {
                     retValue = false;
                     out.printf( message, candidate.getName() );

@@ -1,6 +1,6 @@
 /*
  * ============================================================================
- *  Copyright © 2002-2021 by Thomas Thrien.
+ *  Copyright © 2002-2023 by Thomas Thrien.
  *  All Rights Reserved.
  * ============================================================================
  *  Licensed to the public under the agreements of the GNU Lesser General Public
@@ -19,10 +19,13 @@ package org.tquadrat.foundation.testutil.impl;
 
 import static java.util.Collections.enumeration;
 import static java.util.Objects.isNull;
+import static org.apiguardian.api.API.Status.STABLE;
 
 import java.util.Enumeration;
 import java.util.Map;
 import java.util.ResourceBundle;
+
+import org.apiguardian.api.API;
 
 /**
  *  A simple implementation of
@@ -30,8 +33,11 @@ import java.util.ResourceBundle;
  *  for testing purposes.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: ResourceBundleImpl.java 895 2021-04-05 12:40:34Z tquadrat $
+ *  @version $Id: ResourceBundleImpl.java 1074 2023-10-02 12:05:06Z tquadrat $
+ *  @since 0.0.1
  */
+@API( status = STABLE, since = "0.0.1" )
+
 public class ResourceBundleImpl extends ResourceBundle
 {
         /*------------*\
