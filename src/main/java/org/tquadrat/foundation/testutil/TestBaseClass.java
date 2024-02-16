@@ -69,7 +69,7 @@ import org.junit.jupiter.api.BeforeEach;
  *
  *  @UMLGraph.link
  */
-@SuppressWarnings( {"AbstractClassExtendsConcreteClass", "AbstractClassWithoutAbstractMethods", "UseOfSystemOutOrSystemErr"} )
+@SuppressWarnings( {"AbstractClassWithoutAbstractMethods", "UseOfSystemOutOrSystemErr", "AbstractClassExtendsConcreteClass"} )
 @API( status = STABLE, since = "0.0.5" )
 public abstract class TestBaseClass extends EasyMockSupport
 {
@@ -256,7 +256,7 @@ public abstract class TestBaseClass extends EasyMockSupport
                         failed.set( true );
                         final var buffer = new StringBuilder( t.getName() )
                             .append( " (" )
-                            .append( t.getId() );
+                            .append( t.threadId() );
                         if( t.isDaemon() )
                         {
                             buffer.append( "/DAEMON" );
