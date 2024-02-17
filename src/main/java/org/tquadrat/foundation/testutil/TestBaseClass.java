@@ -64,7 +64,7 @@ import org.junit.jupiter.api.BeforeEach;
  *  A base class for JUnit test classes.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: TestBaseClass.java 1074 2023-10-02 12:05:06Z tquadrat $
+ *  @version $Id: TestBaseClass.java 1100 2024-02-16 23:33:45Z tquadrat $
  *  @since 0.0.5
  *
  *  @UMLGraph.link
