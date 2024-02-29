@@ -1,6 +1,6 @@
 /*
  * ============================================================================
- * Copyright © 2002-2023 by Thomas Thrien.
+ * Copyright © 2002-2024 by Thomas Thrien.
  * All Rights Reserved.
  * ============================================================================
  *
@@ -46,7 +46,7 @@ import org.apiguardian.api.API;
  *  Some methods that are useful in the context of testing.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: TestUtils.java 1074 2023-10-02 12:05:06Z tquadrat $
+ *  @version $Id: TestUtils.java 1105 2024-02-28 12:58:46Z tquadrat $
  *  @since 0.1.0
  *
  *  @UMLGraph.link
@@ -242,11 +242,11 @@ public final class TestUtils
      *  @return {@code true} if the two objects have tested equals,
      *      {@code false} otherwise.
      *
-     *  @author Apache Software Foundation
+     *  @extauthor Apache Software Foundation
      *  @extauthor Steve Downey - steve.downey@netfolio.com
-     *  @author Gary Gregory
-     *  @author Pete Gieser
-     *  @author Arun Mammen Thomas
+     *  @extauthor Gary Gregory
+     *  @extauthor Pete Gieser
+     *  @extauthor Arun Mammen Thomas
      *  @modified Thomas Thrien - thomas.thrien@tquadrat.org
      */
     @SuppressWarnings( "BooleanMethodNameMustStartWithQuestion" )
@@ -278,11 +278,11 @@ public final class TestUtils
      *  @return {@code true} if the two objects have tested equals,
      *      {@code false} otherwise.
      *
-     *  @author Apache Software Foundation
+     *  @extauthor Apache Software Foundation
      *  @extauthor Steve Downey - steve.downey@netfolio.com
-     *  @author Gary Gregory
-     *  @author Pete Gieser
-     *  @author Arun Mammen Thomas
+     *  @extauthor Gary Gregory
+     *  @extauthor Pete Gieser
+     *  @extauthor Arun Mammen Thomas
      *  @modified Thomas Thrien - thomas.thrien@tquadrat.org
      */
     @SuppressWarnings( "BooleanMethodNameMustStartWithQuestion" )
@@ -313,11 +313,11 @@ public final class TestUtils
      *  @return {@code true} if the two objects have tested equals,
      *      {@code false} otherwise.
      *
-     *  @author Apache Software Foundation
+     *  @extauthor Apache Software Foundation
      *  @extauthor Steve Downey - steve.downey@netfolio.com
-     *  @author Gary Gregory
-     *  @author Pete Gieser
-     *  @author Arun Mammen Thomas
+     *  @extauthor Gary Gregory
+     *  @extauthor Pete Gieser
+     *  @extauthor Arun Mammen Thomas
      *  @modified Thomas Thrien - thomas.thrien@tquadrat.org
      */
     @SuppressWarnings( "BooleanMethodNameMustStartWithQuestion" )
@@ -350,11 +350,11 @@ public final class TestUtils
      *  @return {@code true} if the two objects have tested equals,
      *      {@code false} otherwise.
      *
-     *  @author Apache Software Foundation
+     *  @extauthor Apache Software Foundation
      *  @extauthor Steve Downey - steve.downey@netfolio.com
-     *  @author Gary Gregory
-     *  @author Pete Gieser
-     *  @author Arun Mammen Thomas
+     *  @extauthor Gary Gregory
+     *  @extauthor Pete Gieser
+     *  @extauthor Arun Mammen Thomas
      *  @modified Thomas Thrien - thomas.thrien@tquadrat.org
      */
     @SuppressWarnings( "BooleanMethodNameMustStartWithQuestion" )
@@ -391,11 +391,11 @@ public final class TestUtils
      *  @return {@code true} if the two objects have tested equals,
      *      {@code false} otherwise.
      *
-     *  @author Apache Software Foundation
+     *  @extauthor Apache Software Foundation
      *  @extauthor Steve Downey - steve.downey@netfolio.com
-     *  @author Gary Gregory
-     *  @author Pete Gieser
-     *  @author Arun Mammen Thomas
+     *  @extauthor Gary Gregory
+     *  @extauthor Pete Gieser
+     *  @extauthor Arun Mammen Thomas
      *  @modified Thomas Thrien - thomas.thrien@tquadrat.org
      */
     @SuppressWarnings( "BooleanMethodNameMustStartWithQuestion" )
@@ -434,11 +434,11 @@ public final class TestUtils
      *  @return {@code true} if the two objects have tested equals,
      *      {@code false} otherwise.
      *
-     *  @author Apache Software Foundation
+     *  @extauthor Apache Software Foundation
      *  @extauthor Steve Downey - steve.downey@netfolio.com
-     *  @author Gary Gregory
-     *  @author Pete Gieser
-     *  @author Arun Mammen Thomas
+     *  @extauthor Gary Gregory
+     *  @extauthor Pete Gieser
+     *  @extauthor Arun Mammen Thomas
      *  @modified Thomas Thrien - thomas.thrien@tquadrat.org
      */
     @SuppressWarnings( {"BooleanMethodNameMustStartWithQuestion", "OverlyComplexMethod"} )
