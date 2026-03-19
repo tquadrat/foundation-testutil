@@ -1,6 +1,6 @@
 /*
  * ============================================================================
- * Copyright © 2002-2023 by Thomas Thrien.
+ * Copyright © 2002-2025 by Thomas Thrien.
  * All Rights Reserved.
  * ============================================================================
  * Licensed to the public under the agreements of the GNU Lesser General Public
@@ -64,7 +64,7 @@ import org.junit.jupiter.api.BeforeEach;
  *  A base class for JUnit test classes.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: TestBaseClass.java 1100 2024-02-16 23:33:45Z tquadrat $
+ *  @version $Id: TestBaseClass.java 1151 2025-10-01 21:32:15Z tquadrat $
  *  @since 0.0.5
  *
  *  @UMLGraph.link
@@ -429,7 +429,7 @@ public abstract class TestBaseClass extends EasyMockSupport
      *  <ul>
      *  <li>The class is final.</li>
      *  <li>All methods are static.</li>
-     *  <li>Only the default constructor may exists, this has to be private,
+     *  <li>Only the default constructor may exist, this has to be private,
      *  and it has to throw an
      *  {@link Error}
      *  on invocation.</li>
@@ -476,7 +476,7 @@ public abstract class TestBaseClass extends EasyMockSupport
              */
             .sorted()
             //---* Any entry will match - if any at all *----------------------
-            .anyMatch( $ -> true );
+            .anyMatch( _ -> true );
 
         //---* No public or protected constructors are allowed *---------------
         var constructors = candidate.getConstructors();

@@ -1,6 +1,6 @@
 /*
  * ============================================================================
- * Copyright © 2002-2020 by Thomas Thrien.
+ * Copyright © 2002-2026 by Thomas Thrien.
  * All Rights Reserved.
  * ============================================================================
  * Licensed to the public under the agreements of the GNU Lesser General Public
@@ -17,19 +17,19 @@
 
 package org.tquadrat.foundation.testutil;
 
-import static org.apiguardian.api.API.Status.STABLE;
+import org.apiguardian.api.API;
 
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.Optional;
 
-import org.apiguardian.api.API;
+import static org.apiguardian.api.API.Status.STABLE;
 
 /**
  *  This class is meant as the base class for test data records.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: TestDataBase.java 820 2020-12-29 20:34:22Z tquadrat $
+ *  @version $Id: TestDataBase.java 1158 2026-03-14 16:23:29Z tquadrat $
  *  @since 0.1.0
  *
  *  @param  <E> The type of the expected result.
@@ -54,12 +54,16 @@ public abstract class TestDataBase<E> implements Serializable
         \*------------*/
     /**
      *  The optional description of the test.
+     *
+     *  @serial
      */
     @SuppressWarnings( "OptionalUsedAsFieldOrParameterType" )
     private final Optional<String> m_Description;
 
     /**
      *  The expected result.
+     *
+     *  @serial
      */
     @SuppressWarnings( "OptionalUsedAsFieldOrParameterType" )
     private final Optional<E> m_Expected;
