@@ -8,6 +8,8 @@ Some tool classes that I use for my JUnit tests.
     <dependency>
         <groupId>org.tquadrat.library</groupId>
         <artifactId>org.tquadrat.foundation.testutil</artifactId>
-        <version>0.1.0</version>
+        <version>0.25.0</version>
     </dependency>
     ```
+---  
+Last updated: 2026-05-03T17:32:30.441381609+02:00[Europe/Berlin]
