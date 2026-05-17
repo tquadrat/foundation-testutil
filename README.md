@@ -12,4 +12,4 @@ Some tool classes that I use for my JUnit tests.
     </dependency>
     ```
 ---  
-Last updated: 2026-05-09T10:34:07.540758997+02:00[Europe/Berlin]
+Last updated: 2026-05-17T13:14:34.211427985+02:00[Europe/Berlin]
