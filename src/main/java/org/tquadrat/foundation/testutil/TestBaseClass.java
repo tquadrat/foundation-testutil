@@ -64,7 +64,7 @@ import org.junit.jupiter.api.BeforeEach;
  *  A base class for JUnit test classes.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: TestBaseClass.java 1151 2025-10-01 21:32:15Z tquadrat $
+ *  @version $Id: TestBaseClass.java 1258 2026-06-04 18:33:06Z tquadrat $
  *  @since 0.0.5
  *
  *  @UMLGraph.link
@@ -288,8 +288,8 @@ public abstract class TestBaseClass extends EasyMockSupport
      *  Checks whether the machine, that runs the current test, has network
      *  configured.
      *
-     *  @return {@code true} if the current machine has a network configured,
-     *      {@code false} otherwise.
+     *  @return {@true} if the current machine has a network configured,
+     *      {@false} otherwise.
      */
     @SuppressWarnings( "static-method" )
     protected final boolean hasNetwork()
@@ -388,7 +388,7 @@ public abstract class TestBaseClass extends EasyMockSupport
     }   //  saveDefaultStreams()
 
     /**
-     *  Sets the thread test flag to {@code true}, disabling that test.
+     *  Sets the thread test flag to {@true}, disabling that test.
      */
     public final void skipThreadTest() { m_SkipThreadTest = true; }
 
@@ -408,9 +408,9 @@ public abstract class TestBaseClass extends EasyMockSupport
      *  for the details.<br>
      *  <br>Use this method to convert the input from CSV files or alike.
      *
-     *  @param  input   The input String; can be {@code null}.
-     *  @return The processed String; will be {@code null} if the input was
-     *      already {@code null}.
+     *  @param  input   The input String; can be {@null}.
+     *  @return The processed String; will be {@null} if the input was
+     *      already {@null}.
      *
      *  @since 0.1.0
      */
@@ -440,7 +440,7 @@ public abstract class TestBaseClass extends EasyMockSupport
      *  annotation as this has only the retention level {@code SOURCE}.
      *
      *  @param  candidate   The class to inspect.
-     *  @return {@code true} if the class is in fact static, {@code false}
+     *  @return {@true} if the class is in fact static, {@false}
      *      otherwise.
      */
     @SuppressWarnings( {"ProhibitedExceptionThrown", "RedundantStreamOptionalCall", "OverlyComplexMethod"} )

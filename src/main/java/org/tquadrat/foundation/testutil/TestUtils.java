@@ -46,7 +46,7 @@ import org.apiguardian.api.API;
  *  Some methods that are useful in the context of testing.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: TestUtils.java 1105 2024-02-28 12:58:46Z tquadrat $
+ *  @version $Id: TestUtils.java 1258 2026-06-04 18:33:06Z tquadrat $
  *  @since 0.1.0
  *
  *  @UMLGraph.link
@@ -145,22 +145,22 @@ public final class TestUtils
      *  selected packages only and {@code org.tquadrat.test} is not amongst
      *  these, or {@code org.tquadrat.test} is explicitly disabled with
      *  {@code -da} or {@code -disableassertions}, this method will return
-     *  {@code false}. But even it may return {@code true}, it is possible that
+     *  {@false}. But even it may return {@true}, it is possible that
      *  assertions are still not activated for some packages.
      *
-     *  @return {@code true} if assertions are activated for the
+     *  @return {@true} if assertions are activated for the
      *      package {@code org.tquadrat.foundation.test} and hopefully also for
-     *      any other package, {@code false} otherwise.
+     *      any other package, {@false} otherwise.
      */
     @API( status = STABLE, since = "0.0.5" )
     public static final boolean isAssertionOn() { return m_AssertionOn; }
 
     /**
-     *  Tests if the given String is {@code null} or the empty String.
+     *  Tests if the given String is {@null} or the empty String.
      *
      *  @param  input   The String to test.
-     *  @return {@code true} if the given String reference is
-     *      {@code null} or the empty String.
+     *  @return {@true} if the given String reference is
+     *      {@null} or the empty String.
      *
      *  @since 0.1.0
      */
@@ -168,12 +168,12 @@ public final class TestUtils
     public static final boolean isEmpty( final CharSequence input ) { return isNull( input ) || input.isEmpty(); }
 
     /**
-     *  Tests if the given String is {@code null}, the empty String, or just
+     *  Tests if the given String is {@null}, the empty String, or just
      *  containing whitespace.
      *
      *  @param  input   The String to test.
-     *  @return {@code true} if the given String reference is not
-     *      {@code null} and not the empty String.
+     *  @return {@true} if the given String reference is not
+     *      {@null} and not the empty String.
      *
      *  @see String#isBlank()
      *
@@ -189,12 +189,12 @@ public final class TestUtils
     }   //  isEmptyOrBlank()
 
     /**
-     *  Tests if the given String is not {@code null} and not the empty
+     *  Tests if the given String is not {@null} and not the empty
      *  String.
      *
      *  @param  input   The String to test.
-     *  @return {@code true} if the given String reference is not
-     *      {@code null} and not the empty String.
+     *  @return {@true} if the given String reference is not
+     *      {@null} and not the empty String.
      *
      *  @since 0.1.0
      */
@@ -202,12 +202,12 @@ public final class TestUtils
     public static final boolean isNotEmpty( final CharSequence input ) { return nonNull( input ) && !input.isEmpty(); }
 
     /**
-     *  Tests if the given String is not {@code null}, not the empty String,
+     *  Tests if the given String is not {@null}, not the empty String,
      *  and that it contains other characters than just whitespace.
      *
      *  @param  input   The String to test.
-     *  @return {@code true} if the given String reference is not
-     *      {@code null} and not the empty String, and it contains other
+     *  @return {@true} if the given String reference is not
+     *      {@null} and not the empty String, and it contains other
      *      characters than just whitespace.
      *
      *  @see String#isBlank()
@@ -239,8 +239,8 @@ public final class TestUtils
      *
      *  @param  lhs <code>this</code> object.
      *  @param  rhs The other object
-     *  @return {@code true} if the two objects have tested equals,
-     *      {@code false} otherwise.
+     *  @return {@true} if the two objects have tested equals,
+     *      {@false} otherwise.
      *
      *  @extauthor Apache Software Foundation
      *  @extauthor Steve Downey - steve.downey@netfolio.com
@@ -275,8 +275,8 @@ public final class TestUtils
      *  @param  excludeFields   A
      *      {@link Collection}
      *      of String field names to exclude from testing.
-     *  @return {@code true} if the two objects have tested equals,
-     *      {@code false} otherwise.
+     *  @return {@true} if the two objects have tested equals,
+     *      {@false} otherwise.
      *
      *  @extauthor Apache Software Foundation
      *  @extauthor Steve Downey - steve.downey@netfolio.com
@@ -309,9 +309,9 @@ public final class TestUtils
      *  @param  lhs <code>this</code> object.
      *  @param  rhs The other object
      *  @param  excludeFields   An array of String field names to exclude from
-     *      testing; may be {@code null}.
-     *  @return {@code true} if the two objects have tested equals,
-     *      {@code false} otherwise.
+     *      testing; may be {@null}.
+     *  @return {@true} if the two objects have tested equals,
+     *      {@false} otherwise.
      *
      *  @extauthor Apache Software Foundation
      *  @extauthor Steve Downey - steve.downey@netfolio.com
@@ -337,7 +337,7 @@ public final class TestUtils
      *  are not set up correctly. It is also not as efficient as testing
      *  explicitly.<br>
      *  <br>If the <code>testTransients</code> parameter is set to
-     *  {@code true}, transient members will be tested, otherwise they are
+     *  {@true}, transient members will be tested, otherwise they are
      *  ignored, as they are likely derived fields, and not part of the value
      *  of the object instance.<br>
      *  <br>Static fields will not be tested. Superclass fields will be
@@ -345,10 +345,10 @@ public final class TestUtils
      *
      *  @param  lhs <code>this</code> object.
      *  @param  rhs The other object
-     *  @param  testTransients  {@code true} whether to include transient
-     *      fields, {@code false} otherwise.
-     *  @return {@code true} if the two objects have tested equals,
-     *      {@code false} otherwise.
+     *  @param  testTransients  {@true} whether to include transient
+     *      fields, {@false} otherwise.
+     *  @return {@true} if the two objects have tested equals,
+     *      {@false} otherwise.
      *
      *  @extauthor Apache Software Foundation
      *  @extauthor Steve Downey - steve.downey@netfolio.com
@@ -374,22 +374,22 @@ public final class TestUtils
      *  are not set up correctly. It is also not as efficient as testing
      *  explicitly.<br>
      *  <br>If the <code>testTransients</code> parameter is set to
-     *  {@code true}, transient members will be tested, otherwise they are
+     *  {@true}, transient members will be tested, otherwise they are
      *  ignored, as they are likely derived fields, and not part of the value
      *  of the object instance.<br>
      *  <br>Static fields will not be tested. Superclass fields will be
-     *  appended up to and including the specified superclass. A {@code null}
+     *  appended up to and including the specified superclass. A {@null}
      *  superclass is treated as
      *  {@link java.lang.Object}.
      *
      *  @param  lhs <code>this</code> object.
      *  @param  rhs The other object
-     *  @param  testTransients  {@code true} whether to include transient
-     *      fields, {@code false} otherwise.
+     *  @param  testTransients  {@true} whether to include transient
+     *      fields, {@false} otherwise.
      *  @param  reflectUpToClass    The superclass to reflect up to
-     *      (inclusive), may be {@code null}
-     *  @return {@code true} if the two objects have tested equals,
-     *      {@code false} otherwise.
+     *      (inclusive), may be {@null}
+     *  @return {@true} if the two objects have tested equals,
+     *      {@false} otherwise.
      *
      *  @extauthor Apache Software Foundation
      *  @extauthor Steve Downey - steve.downey@netfolio.com
@@ -415,24 +415,24 @@ public final class TestUtils
      *  are not set up correctly. It is also not as efficient as testing
      *  explicitly.<br>
      *  <br>If the <code>testTransients</code> parameter is set to
-     *  {@code true}, transient members will be tested, otherwise they are
+     *  {@true}, transient members will be tested, otherwise they are
      *  ignored, as they are likely derived fields, and not part of the value
      *  of the object instance.<br>
      *  <br>Static fields will not be tested. Superclass fields will be
-     *  appended up to and including the specified superclass. A {@code null}
+     *  appended up to and including the specified superclass. A {@null}
      *  superclass is treated as
      *  {@link java.lang.Object}.
      *
      *  @param  lhs <code>this</code> object.
      *  @param  rhs The other object
-     *  @param  testTransients  {@code true} whether to include transient
-     *      fields, {@code false} otherwise.
+     *  @param  testTransients  {@true} whether to include transient
+     *      fields, {@false} otherwise.
      *  @param  reflectUpToClass    The superclass to reflect up to
-     *      (inclusive), may be {@code null}
+     *      (inclusive), may be {@null}
      *  @param  excludeFields   An array of String field names to exclude from
-     *      testing; may be {@code null}.
-     *  @return {@code true} if the two objects have tested equals,
-     *      {@code false} otherwise.
+     *      testing; may be {@null}.
+     *  @return {@true} if the two objects have tested equals,
+     *      {@false} otherwise.
      *
      *  @extauthor Apache Software Foundation
      *  @extauthor Steve Downey - steve.downey@netfolio.com
@@ -509,52 +509,52 @@ public final class TestUtils
     }   //  reflectionEquals()
 
     /**
-     *  Checks if the given value {@code a} is {@code null} and throws
+     *  Checks if the given value {@code a} is {@null} and throws
      *  a
      *  {@link NullPointerException}
-     *  if it is {@code null}; calls
+     *  if it is {@null}; calls
      *  {@link java.util.Objects#requireNonNull(Object)}
      *  internally.
      *
      *  @param  <T> The type of the value to check.
      *  @param  a   The value to check.
-     *  @return The value if it is not {@code null}.
-     *  @throws NullPointerException   {@code a} is {@code null}.
+     *  @return The value if it is not {@null}.
+     *  @throws NullPointerException   {@code a} is {@null}.
      */
     @API( status = STABLE, since = "0.0.5" )
     public static final <T> T requireNonNull( final T a ) { return java.util.Objects.requireNonNull( a ); }
 
     /**
-     *  Checks if the given value {@code a} is {@code null} and throws
+     *  Checks if the given value {@code a} is {@null} and throws
      *  a
      *  {@link NullPointerException}
-     *  with the specified message if it is {@code null}. Calls
+     *  with the specified message if it is {@null}. Calls
      *  {@link java.util.Objects#requireNonNull(Object, String)}
      *  internally.
      *
      *  @param  <T> The type of the value to check.
      *  @param  a   The value to check.
      *  @param  message The message that is set to the thrown exception.
-     *  @return The value if it is not {@code null}.
-     *  @throws NullPointerException   {@code a} is {@code null}.
+     *  @return The value if it is not {@null}.
+     *  @throws NullPointerException   {@code a} is {@null}.
      */
     @API( status = STABLE, since = "0.0.5" )
     public static final <T> T requireNonNull( final T a, final String message ) { return java.util.Objects.requireNonNull( a, message ); }
 
     /**
-     *  Checks if the given argument {@code a} is {@code null} and throws
+     *  Checks if the given argument {@code a} is {@null} and throws
      *  a
      *  {@link NullPointerException}
-     *  if it is {@code null}.
+     *  if it is {@null}.
      *
      *  @param  <T> The type of the argument to check.
      *  @param  a   The argument to check.
      *  @param  name    The name of the argument; this is used for the error
      *      message.
-     *  @return The argument if it is not {@code null}.
+     *  @return The argument if it is not {@null}.
      *  @throws IllegalArgumentException    {@code name} is empty.
      *  @throws NullPointerException   {@code name} or {@code a} is
-     *      {@code null}.
+     *      {@null}.
      */
     @SuppressWarnings( "ProhibitedExceptionThrown" )
     @API( status = STABLE, since = "0.0.5" )
@@ -578,10 +578,10 @@ public final class TestUtils
     }   //  requireNonNullArgument()
 
     /**
-     *  Checks if the given argument {@code a} is {@code null} or empty
+     *  Checks if the given argument {@code a} is {@null} or empty
      *  and throws a
      *  {@link NullPointerException}
-     *  if it is {@code null}, or a
+     *  if it is {@null}, or a
      *  {@link IllegalArgumentException}
      *  if it is empty.<br>
      *  <br>Only Strings, arrays,
@@ -592,7 +592,7 @@ public final class TestUtils
      *  {@link java.util.Enumeration}
      *  does not provide an API for the check on emptiness
      *  ({@link java.util.Enumeration#hasMoreElements() hasMoreElements()}
-     *  will return {@code false} after all elements have been taken from
+     *  will return {@false} after all elements have been taken from
      *  the {@code Enumeration} instance), the result for arguments of this
      *  type has to be taken with caution.<br>
      *  <br>For instances of
@@ -605,12 +605,12 @@ public final class TestUtils
      *  amount of elements.
      *
      *  @param  <T> The type of the argument to check.
-     *  @param  a   The argument to check; may be {@code null}.
+     *  @param  a   The argument to check; may be {@null}.
      *  @param  name    The name of the argument; this is used for the error
      *      message.
-     *  @return The argument if it is not {@code null}.
+     *  @return The argument if it is not {@null}.
      *  @throws NullPointerException   {@code name} or {@code a} is
-     *      {@code null}.
+     *      {@null}.
      *  @throws IllegalArgumentException   {@code name} or {@code a} is empty.
      */
     @SuppressWarnings( {"ProhibitedExceptionThrown", "OverlyComplexMethod"} )
@@ -688,11 +688,11 @@ public final class TestUtils
      *  @param  lhs The left-hand object.
      *  @param  rhs The right-hand object.
      *  @param  testClass   The class that defines the details.
-     *  @param  useTransients   {@code true} if to test transient fields
-     *      also, {@code false} otherwise.
+     *  @param  useTransients   {@true} if to test transient fields
+     *      also, {@false} otherwise.
      *  @param  excludeFields   Set of field names to exclude from testing.
-     *  @return {@code true} if all relevant fields are equal,
-     *      {@code false} otherwise.
+     *  @return {@true} if all relevant fields are equal,
+     *      {@false} otherwise.
      */
     @SuppressWarnings( "OverlyComplexBooleanExpression" )
     private static boolean testReflective( final Object lhs, final Object rhs, final Class<?> testClass, final boolean useTransients, final Collection<String> excludeFields )
@@ -735,7 +735,7 @@ public final class TestUtils
      *  {@link String},
      *  usually by calling its
      *  {@link Object#toString() toString()}
-     *  method. If the value of the argument is {@code null}, the text
+     *  method. If the value of the argument is {@null}, the text
      *  &quot;null&quot; will be returned instead. Arrays will be
      *  converted to a string through calling the respective {@code toString()}
      *  method from
@@ -747,7 +747,7 @@ public final class TestUtils
      *  {@link java.util.Calendar}
      *  will be translated based on the default locale - whatever that is.
      *
-     *  @param  object  The object; may be {@code null}.
+     *  @param  object  The object; may be {@null}.
      *  @return The object's string representation.
      *
      *  @see java.util.Arrays#toString(boolean[])
@@ -774,7 +774,7 @@ public final class TestUtils
      *  {@link String},
      *  usually by calling its
      *  {@link Object#toString() toString()}
-     *  method. If the value of the argument is {@code null}, the text
+     *  method. If the value of the argument is {@null}, the text
      *  provided as the {@code nullDefault} argument will be returned instead.
      *  Arrays will be converted to a string through calling the respective
      *  {@code toString()} method from
@@ -786,9 +786,9 @@ public final class TestUtils
      *  {@link java.util.Calendar}
      *  will be translated based on the default locale - whatever that is.
      *
-     *  @param  object  The object; may be {@code null}.
+     *  @param  object  The object; may be {@null}.
      *  @param  nullDefault The text that should be returned if {@code object}
-     *      is {@code null}.
+     *      is {@null}.
      *  @return The object's string representation.
      *
      *  @see java.util.Arrays#toString(boolean[])

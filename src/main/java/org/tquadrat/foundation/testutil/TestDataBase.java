@@ -17,19 +17,19 @@
 
 package org.tquadrat.foundation.testutil;
 
-import org.apiguardian.api.API;
+import static org.apiguardian.api.API.Status.STABLE;
 
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.Optional;
 
-import static org.apiguardian.api.API.Status.STABLE;
+import org.apiguardian.api.API;
 
 /**
  *  This class is meant as the base class for test data records.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: TestDataBase.java 1158 2026-03-14 16:23:29Z tquadrat $
+ *  @version $Id: TestDataBase.java 1258 2026-06-04 18:33:06Z tquadrat $
  *  @since 0.1.0
  *
  *  @param  <E> The type of the expected result.
@@ -85,7 +85,7 @@ public abstract class TestDataBase<E> implements Serializable
     /**
      *  Creates a new {@code TestDataBase} instance.
      *
-     *  @param  expected    The expected result for the test; if {@code null}
+     *  @param  expected    The expected result for the test; if {@null}
      *      the test should fail.
      */
     protected TestDataBase( final E expected ) { this( expected, null ); }
@@ -93,7 +93,7 @@ public abstract class TestDataBase<E> implements Serializable
     /**
      *  Creates a new {@code TestDataBase} instance.
      *
-     *  @param  expected    The expected result for the test; if {@code null}
+     *  @param  expected    The expected result for the test; if {@null}
      *      the test should fail.
      *  @param  description The description for this test.
      */
@@ -128,7 +128,7 @@ public abstract class TestDataBase<E> implements Serializable
     /**
      *  Indicates whether the test should fail.
      *
-     *  @return {@code true} if the test should fail, {@code false} if it
+     *  @return {@true} if the test should fail, {@false} if it
      *      should be successful.
      */
     public final boolean shouldFail() { return m_Expected.isEmpty(); }

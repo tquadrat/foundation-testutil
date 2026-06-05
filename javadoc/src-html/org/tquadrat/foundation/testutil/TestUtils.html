@@ -59,7 +59,7 @@
 <span class="source-line-no">046</span><span id="line-46"> *  Some methods that are useful in the context of testing.</span>
 <span class="source-line-no">047</span><span id="line-47"> *</span>
 <span class="source-line-no">048</span><span id="line-48"> *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org</span>
-<span class="source-line-no">049</span><span id="line-49"> *  @version $Id: TestUtils.java 1105 2024-02-28 12:58:46Z tquadrat $</span>
+<span class="source-line-no">049</span><span id="line-49"> *  @version $Id: TestUtils.java 1258 2026-06-04 18:33:06Z tquadrat $</span>
 <span class="source-line-no">050</span><span id="line-50"> *  @since 0.1.0</span>
 <span class="source-line-no">051</span><span id="line-51"> *</span>
 <span class="source-line-no">052</span><span id="line-52"> *  @UMLGraph.link</span>
@@ -158,22 +158,22 @@
 <span class="source-line-no">145</span><span id="line-145">     *  selected packages only and {@code org.tquadrat.test} is not amongst</span>
 <span class="source-line-no">146</span><span id="line-146">     *  these, or {@code org.tquadrat.test} is explicitly disabled with</span>
 <span class="source-line-no">147</span><span id="line-147">     *  {@code -da} or {@code -disableassertions}, this method will return</span>
-<span class="source-line-no">148</span><span id="line-148">     *  {@code false}. But even it may return {@code true}, it is possible that</span>
+<span class="source-line-no">148</span><span id="line-148">     *  {@false}. But even it may return {@true}, it is possible that</span>
 <span class="source-line-no">149</span><span id="line-149">     *  assertions are still not activated for some packages.</span>
 <span class="source-line-no">150</span><span id="line-150">     *</span>
-<span class="source-line-no">151</span><span id="line-151">     *  @return {@code true} if assertions are activated for the</span>
+<span class="source-line-no">151</span><span id="line-151">     *  @return {@true} if assertions are activated for the</span>
 <span class="source-line-no">152</span><span id="line-152">     *      package {@code org.tquadrat.foundation.test} and hopefully also for</span>
-<span class="source-line-no">153</span><span id="line-153">     *      any other package, {@code false} otherwise.</span>
+<span class="source-line-no">153</span><span id="line-153">     *      any other package, {@false} otherwise.</span>
 <span class="source-line-no">154</span><span id="line-154">     */</span>
 <span class="source-line-no">155</span><span id="line-155">    @API( status = STABLE, since = "0.0.5" )</span>
 <span class="source-line-no">156</span><span id="line-156">    public static final boolean isAssertionOn() { return m_AssertionOn; }</span>
 <span class="source-line-no">157</span><span id="line-157"></span>
 <span class="source-line-no">158</span><span id="line-158">    /**</span>
-<span class="source-line-no">159</span><span id="line-159">     *  Tests if the given String is {@code null} or the empty String.</span>
+<span class="source-line-no">159</span><span id="line-159">     *  Tests if the given String is {@null} or the empty String.</span>
 <span class="source-line-no">160</span><span id="line-160">     *</span>
 <span class="source-line-no">161</span><span id="line-161">     *  @param  input   The String to test.</span>
-<span class="source-line-no">162</span><span id="line-162">     *  @return {@code true} if the given String reference is</span>
-<span class="source-line-no">163</span><span id="line-163">     *      {@code null} or the empty String.</span>
+<span class="source-line-no">162</span><span id="line-162">     *  @return {@true} if the given String reference is</span>
+<span class="source-line-no">163</span><span id="line-163">     *      {@null} or the empty String.</span>
 <span class="source-line-no">164</span><span id="line-164">     *</span>
 <span class="source-line-no">165</span><span id="line-165">     *  @since 0.1.0</span>
 <span class="source-line-no">166</span><span id="line-166">     */</span>
@@ -181,12 +181,12 @@
 <span class="source-line-no">168</span><span id="line-168">    public static final boolean isEmpty( final CharSequence input ) { return isNull( input ) || input.isEmpty(); }</span>
 <span class="source-line-no">169</span><span id="line-169"></span>
 <span class="source-line-no">170</span><span id="line-170">    /**</span>
-<span class="source-line-no">171</span><span id="line-171">     *  Tests if the given String is {@code null}, the empty String, or just</span>
+<span class="source-line-no">171</span><span id="line-171">     *  Tests if the given String is {@null}, the empty String, or just</span>
 <span class="source-line-no">172</span><span id="line-172">     *  containing whitespace.</span>
 <span class="source-line-no">173</span><span id="line-173">     *</span>
 <span class="source-line-no">174</span><span id="line-174">     *  @param  input   The String to test.</span>
-<span class="source-line-no">175</span><span id="line-175">     *  @return {@code true} if the given String reference is not</span>
-<span class="source-line-no">176</span><span id="line-176">     *      {@code null} and not the empty String.</span>
+<span class="source-line-no">175</span><span id="line-175">     *  @return {@true} if the given String reference is not</span>
+<span class="source-line-no">176</span><span id="line-176">     *      {@null} and not the empty String.</span>
 <span class="source-line-no">177</span><span id="line-177">     *</span>
 <span class="source-line-no">178</span><span id="line-178">     *  @see String#isBlank()</span>
 <span class="source-line-no">179</span><span id="line-179">     *</span>
@@ -202,12 +202,12 @@
 <span class="source-line-no">189</span><span id="line-189">    }   //  isEmptyOrBlank()</span>
 <span class="source-line-no">190</span><span id="line-190"></span>
 <span class="source-line-no">191</span><span id="line-191">    /**</span>
-<span class="source-line-no">192</span><span id="line-192">     *  Tests if the given String is not {@code null} and not the empty</span>
+<span class="source-line-no">192</span><span id="line-192">     *  Tests if the given String is not {@null} and not the empty</span>
 <span class="source-line-no">193</span><span id="line-193">     *  String.</span>
 <span class="source-line-no">194</span><span id="line-194">     *</span>
 <span class="source-line-no">195</span><span id="line-195">     *  @param  input   The String to test.</span>
-<span class="source-line-no">196</span><span id="line-196">     *  @return {@code true} if the given String reference is not</span>
-<span class="source-line-no">197</span><span id="line-197">     *      {@code null} and not the empty String.</span>
+<span class="source-line-no">196</span><span id="line-196">     *  @return {@true} if the given String reference is not</span>
+<span class="source-line-no">197</span><span id="line-197">     *      {@null} and not the empty String.</span>
 <span class="source-line-no">198</span><span id="line-198">     *</span>
 <span class="source-line-no">199</span><span id="line-199">     *  @since 0.1.0</span>
 <span class="source-line-no">200</span><span id="line-200">     */</span>
@@ -215,12 +215,12 @@
 <span class="source-line-no">202</span><span id="line-202">    public static final boolean isNotEmpty( final CharSequence input ) { return nonNull( input ) &amp;&amp; !input.isEmpty(); }</span>
 <span class="source-line-no">203</span><span id="line-203"></span>
 <span class="source-line-no">204</span><span id="line-204">    /**</span>
-<span class="source-line-no">205</span><span id="line-205">     *  Tests if the given String is not {@code null}, not the empty String,</span>
+<span class="source-line-no">205</span><span id="line-205">     *  Tests if the given String is not {@null}, not the empty String,</span>
 <span class="source-line-no">206</span><span id="line-206">     *  and that it contains other characters than just whitespace.</span>
 <span class="source-line-no">207</span><span id="line-207">     *</span>
 <span class="source-line-no">208</span><span id="line-208">     *  @param  input   The String to test.</span>
-<span class="source-line-no">209</span><span id="line-209">     *  @return {@code true} if the given String reference is not</span>
-<span class="source-line-no">210</span><span id="line-210">     *      {@code null} and not the empty String, and it contains other</span>
+<span class="source-line-no">209</span><span id="line-209">     *  @return {@true} if the given String reference is not</span>
+<span class="source-line-no">210</span><span id="line-210">     *      {@null} and not the empty String, and it contains other</span>
 <span class="source-line-no">211</span><span id="line-211">     *      characters than just whitespace.</span>
 <span class="source-line-no">212</span><span id="line-212">     *</span>
 <span class="source-line-no">213</span><span id="line-213">     *  @see String#isBlank()</span>
@@ -252,8 +252,8 @@
 <span class="source-line-no">239</span><span id="line-239">     *</span>
 <span class="source-line-no">240</span><span id="line-240">     *  @param  lhs &lt;code&gt;this&lt;/code&gt; object.</span>
 <span class="source-line-no">241</span><span id="line-241">     *  @param  rhs The other object</span>
-<span class="source-line-no">242</span><span id="line-242">     *  @return {@code true} if the two objects have tested equals,</span>
-<span class="source-line-no">243</span><span id="line-243">     *      {@code false} otherwise.</span>
+<span class="source-line-no">242</span><span id="line-242">     *  @return {@true} if the two objects have tested equals,</span>
+<span class="source-line-no">243</span><span id="line-243">     *      {@false} otherwise.</span>
 <span class="source-line-no">244</span><span id="line-244">     *</span>
 <span class="source-line-no">245</span><span id="line-245">     *  @extauthor Apache Software Foundation</span>
 <span class="source-line-no">246</span><span id="line-246">     *  @extauthor Steve Downey - steve.downey@netfolio.com</span>
@@ -288,8 +288,8 @@
 <span class="source-line-no">275</span><span id="line-275">     *  @param  excludeFields   A</span>
 <span class="source-line-no">276</span><span id="line-276">     *      {@link Collection}</span>
 <span class="source-line-no">277</span><span id="line-277">     *      of String field names to exclude from testing.</span>
-<span class="source-line-no">278</span><span id="line-278">     *  @return {@code true} if the two objects have tested equals,</span>
-<span class="source-line-no">279</span><span id="line-279">     *      {@code false} otherwise.</span>
+<span class="source-line-no">278</span><span id="line-278">     *  @return {@true} if the two objects have tested equals,</span>
+<span class="source-line-no">279</span><span id="line-279">     *      {@false} otherwise.</span>
 <span class="source-line-no">280</span><span id="line-280">     *</span>
 <span class="source-line-no">281</span><span id="line-281">     *  @extauthor Apache Software Foundation</span>
 <span class="source-line-no">282</span><span id="line-282">     *  @extauthor Steve Downey - steve.downey@netfolio.com</span>
@@ -322,9 +322,9 @@
 <span class="source-line-no">309</span><span id="line-309">     *  @param  lhs &lt;code&gt;this&lt;/code&gt; object.</span>
 <span class="source-line-no">310</span><span id="line-310">     *  @param  rhs The other object</span>
 <span class="source-line-no">311</span><span id="line-311">     *  @param  excludeFields   An array of String field names to exclude from</span>
-<span class="source-line-no">312</span><span id="line-312">     *      testing; may be {@code null}.</span>
-<span class="source-line-no">313</span><span id="line-313">     *  @return {@code true} if the two objects have tested equals,</span>
-<span class="source-line-no">314</span><span id="line-314">     *      {@code false} otherwise.</span>
+<span class="source-line-no">312</span><span id="line-312">     *      testing; may be {@null}.</span>
+<span class="source-line-no">313</span><span id="line-313">     *  @return {@true} if the two objects have tested equals,</span>
+<span class="source-line-no">314</span><span id="line-314">     *      {@false} otherwise.</span>
 <span class="source-line-no">315</span><span id="line-315">     *</span>
 <span class="source-line-no">316</span><span id="line-316">     *  @extauthor Apache Software Foundation</span>
 <span class="source-line-no">317</span><span id="line-317">     *  @extauthor Steve Downey - steve.downey@netfolio.com</span>
@@ -350,7 +350,7 @@
 <span class="source-line-no">337</span><span id="line-337">     *  are not set up correctly. It is also not as efficient as testing</span>
 <span class="source-line-no">338</span><span id="line-338">     *  explicitly.&lt;br&gt;</span>
 <span class="source-line-no">339</span><span id="line-339">     *  &lt;br&gt;If the &lt;code&gt;testTransients&lt;/code&gt; parameter is set to</span>
-<span class="source-line-no">340</span><span id="line-340">     *  {@code true}, transient members will be tested, otherwise they are</span>
+<span class="source-line-no">340</span><span id="line-340">     *  {@true}, transient members will be tested, otherwise they are</span>
 <span class="source-line-no">341</span><span id="line-341">     *  ignored, as they are likely derived fields, and not part of the value</span>
 <span class="source-line-no">342</span><span id="line-342">     *  of the object instance.&lt;br&gt;</span>
 <span class="source-line-no">343</span><span id="line-343">     *  &lt;br&gt;Static fields will not be tested. Superclass fields will be</span>
@@ -358,10 +358,10 @@
 <span class="source-line-no">345</span><span id="line-345">     *</span>
 <span class="source-line-no">346</span><span id="line-346">     *  @param  lhs &lt;code&gt;this&lt;/code&gt; object.</span>
 <span class="source-line-no">347</span><span id="line-347">     *  @param  rhs The other object</span>
-<span class="source-line-no">348</span><span id="line-348">     *  @param  testTransients  {@code true} whether to include transient</span>
-<span class="source-line-no">349</span><span id="line-349">     *      fields, {@code false} otherwise.</span>
-<span class="source-line-no">350</span><span id="line-350">     *  @return {@code true} if the two objects have tested equals,</span>
-<span class="source-line-no">351</span><span id="line-351">     *      {@code false} otherwise.</span>
+<span class="source-line-no">348</span><span id="line-348">     *  @param  testTransients  {@true} whether to include transient</span>
+<span class="source-line-no">349</span><span id="line-349">     *      fields, {@false} otherwise.</span>
+<span class="source-line-no">350</span><span id="line-350">     *  @return {@true} if the two objects have tested equals,</span>
+<span class="source-line-no">351</span><span id="line-351">     *      {@false} otherwise.</span>
 <span class="source-line-no">352</span><span id="line-352">     *</span>
 <span class="source-line-no">353</span><span id="line-353">     *  @extauthor Apache Software Foundation</span>
 <span class="source-line-no">354</span><span id="line-354">     *  @extauthor Steve Downey - steve.downey@netfolio.com</span>
@@ -387,22 +387,22 @@
 <span class="source-line-no">374</span><span id="line-374">     *  are not set up correctly. It is also not as efficient as testing</span>
 <span class="source-line-no">375</span><span id="line-375">     *  explicitly.&lt;br&gt;</span>
 <span class="source-line-no">376</span><span id="line-376">     *  &lt;br&gt;If the &lt;code&gt;testTransients&lt;/code&gt; parameter is set to</span>
-<span class="source-line-no">377</span><span id="line-377">     *  {@code true}, transient members will be tested, otherwise they are</span>
+<span class="source-line-no">377</span><span id="line-377">     *  {@true}, transient members will be tested, otherwise they are</span>
 <span class="source-line-no">378</span><span id="line-378">     *  ignored, as they are likely derived fields, and not part of the value</span>
 <span class="source-line-no">379</span><span id="line-379">     *  of the object instance.&lt;br&gt;</span>
 <span class="source-line-no">380</span><span id="line-380">     *  &lt;br&gt;Static fields will not be tested. Superclass fields will be</span>
-<span class="source-line-no">381</span><span id="line-381">     *  appended up to and including the specified superclass. A {@code null}</span>
+<span class="source-line-no">381</span><span id="line-381">     *  appended up to and including the specified superclass. A {@null}</span>
 <span class="source-line-no">382</span><span id="line-382">     *  superclass is treated as</span>
 <span class="source-line-no">383</span><span id="line-383">     *  {@link java.lang.Object}.</span>
 <span class="source-line-no">384</span><span id="line-384">     *</span>
 <span class="source-line-no">385</span><span id="line-385">     *  @param  lhs &lt;code&gt;this&lt;/code&gt; object.</span>
 <span class="source-line-no">386</span><span id="line-386">     *  @param  rhs The other object</span>
-<span class="source-line-no">387</span><span id="line-387">     *  @param  testTransients  {@code true} whether to include transient</span>
-<span class="source-line-no">388</span><span id="line-388">     *      fields, {@code false} otherwise.</span>
+<span class="source-line-no">387</span><span id="line-387">     *  @param  testTransients  {@true} whether to include transient</span>
+<span class="source-line-no">388</span><span id="line-388">     *      fields, {@false} otherwise.</span>
 <span class="source-line-no">389</span><span id="line-389">     *  @param  reflectUpToClass    The superclass to reflect up to</span>
-<span class="source-line-no">390</span><span id="line-390">     *      (inclusive), may be {@code null}</span>
-<span class="source-line-no">391</span><span id="line-391">     *  @return {@code true} if the two objects have tested equals,</span>
-<span class="source-line-no">392</span><span id="line-392">     *      {@code false} otherwise.</span>
+<span class="source-line-no">390</span><span id="line-390">     *      (inclusive), may be {@null}</span>
+<span class="source-line-no">391</span><span id="line-391">     *  @return {@true} if the two objects have tested equals,</span>
+<span class="source-line-no">392</span><span id="line-392">     *      {@false} otherwise.</span>
 <span class="source-line-no">393</span><span id="line-393">     *</span>
 <span class="source-line-no">394</span><span id="line-394">     *  @extauthor Apache Software Foundation</span>
 <span class="source-line-no">395</span><span id="line-395">     *  @extauthor Steve Downey - steve.downey@netfolio.com</span>
@@ -428,24 +428,24 @@
 <span class="source-line-no">415</span><span id="line-415">     *  are not set up correctly. It is also not as efficient as testing</span>
 <span class="source-line-no">416</span><span id="line-416">     *  explicitly.&lt;br&gt;</span>
 <span class="source-line-no">417</span><span id="line-417">     *  &lt;br&gt;If the &lt;code&gt;testTransients&lt;/code&gt; parameter is set to</span>
-<span class="source-line-no">418</span><span id="line-418">     *  {@code true}, transient members will be tested, otherwise they are</span>
+<span class="source-line-no">418</span><span id="line-418">     *  {@true}, transient members will be tested, otherwise they are</span>
 <span class="source-line-no">419</span><span id="line-419">     *  ignored, as they are likely derived fields, and not part of the value</span>
 <span class="source-line-no">420</span><span id="line-420">     *  of the object instance.&lt;br&gt;</span>
 <span class="source-line-no">421</span><span id="line-421">     *  &lt;br&gt;Static fields will not be tested. Superclass fields will be</span>
-<span class="source-line-no">422</span><span id="line-422">     *  appended up to and including the specified superclass. A {@code null}</span>
+<span class="source-line-no">422</span><span id="line-422">     *  appended up to and including the specified superclass. A {@null}</span>
 <span class="source-line-no">423</span><span id="line-423">     *  superclass is treated as</span>
 <span class="source-line-no">424</span><span id="line-424">     *  {@link java.lang.Object}.</span>
 <span class="source-line-no">425</span><span id="line-425">     *</span>
 <span class="source-line-no">426</span><span id="line-426">     *  @param  lhs &lt;code&gt;this&lt;/code&gt; object.</span>
 <span class="source-line-no">427</span><span id="line-427">     *  @param  rhs The other object</span>
-<span class="source-line-no">428</span><span id="line-428">     *  @param  testTransients  {@code true} whether to include transient</span>
-<span class="source-line-no">429</span><span id="line-429">     *      fields, {@code false} otherwise.</span>
+<span class="source-line-no">428</span><span id="line-428">     *  @param  testTransients  {@true} whether to include transient</span>
+<span class="source-line-no">429</span><span id="line-429">     *      fields, {@false} otherwise.</span>
 <span class="source-line-no">430</span><span id="line-430">     *  @param  reflectUpToClass    The superclass to reflect up to</span>
-<span class="source-line-no">431</span><span id="line-431">     *      (inclusive), may be {@code null}</span>
+<span class="source-line-no">431</span><span id="line-431">     *      (inclusive), may be {@null}</span>
 <span class="source-line-no">432</span><span id="line-432">     *  @param  excludeFields   An array of String field names to exclude from</span>
-<span class="source-line-no">433</span><span id="line-433">     *      testing; may be {@code null}.</span>
-<span class="source-line-no">434</span><span id="line-434">     *  @return {@code true} if the two objects have tested equals,</span>
-<span class="source-line-no">435</span><span id="line-435">     *      {@code false} otherwise.</span>
+<span class="source-line-no">433</span><span id="line-433">     *      testing; may be {@null}.</span>
+<span class="source-line-no">434</span><span id="line-434">     *  @return {@true} if the two objects have tested equals,</span>
+<span class="source-line-no">435</span><span id="line-435">     *      {@false} otherwise.</span>
 <span class="source-line-no">436</span><span id="line-436">     *</span>
 <span class="source-line-no">437</span><span id="line-437">     *  @extauthor Apache Software Foundation</span>
 <span class="source-line-no">438</span><span id="line-438">     *  @extauthor Steve Downey - steve.downey@netfolio.com</span>
@@ -522,52 +522,52 @@
 <span class="source-line-no">509</span><span id="line-509">    }   //  reflectionEquals()</span>
 <span class="source-line-no">510</span><span id="line-510"></span>
 <span class="source-line-no">511</span><span id="line-511">    /**</span>
-<span class="source-line-no">512</span><span id="line-512">     *  Checks if the given value {@code a} is {@code null} and throws</span>
+<span class="source-line-no">512</span><span id="line-512">     *  Checks if the given value {@code a} is {@null} and throws</span>
 <span class="source-line-no">513</span><span id="line-513">     *  a</span>
 <span class="source-line-no">514</span><span id="line-514">     *  {@link NullPointerException}</span>
-<span class="source-line-no">515</span><span id="line-515">     *  if it is {@code null}; calls</span>
+<span class="source-line-no">515</span><span id="line-515">     *  if it is {@null}; calls</span>
 <span class="source-line-no">516</span><span id="line-516">     *  {@link java.util.Objects#requireNonNull(Object)}</span>
 <span class="source-line-no">517</span><span id="line-517">     *  internally.</span>
 <span class="source-line-no">518</span><span id="line-518">     *</span>
 <span class="source-line-no">519</span><span id="line-519">     *  @param  &lt;T&gt; The type of the value to check.</span>
 <span class="source-line-no">520</span><span id="line-520">     *  @param  a   The value to check.</span>
-<span class="source-line-no">521</span><span id="line-521">     *  @return The value if it is not {@code null}.</span>
-<span class="source-line-no">522</span><span id="line-522">     *  @throws NullPointerException   {@code a} is {@code null}.</span>
+<span class="source-line-no">521</span><span id="line-521">     *  @return The value if it is not {@null}.</span>
+<span class="source-line-no">522</span><span id="line-522">     *  @throws NullPointerException   {@code a} is {@null}.</span>
 <span class="source-line-no">523</span><span id="line-523">     */</span>
 <span class="source-line-no">524</span><span id="line-524">    @API( status = STABLE, since = "0.0.5" )</span>
 <span class="source-line-no">525</span><span id="line-525">    public static final &lt;T&gt; T requireNonNull( final T a ) { return java.util.Objects.requireNonNull( a ); }</span>
 <span class="source-line-no">526</span><span id="line-526"></span>
 <span class="source-line-no">527</span><span id="line-527">    /**</span>
-<span class="source-line-no">528</span><span id="line-528">     *  Checks if the given value {@code a} is {@code null} and throws</span>
+<span class="source-line-no">528</span><span id="line-528">     *  Checks if the given value {@code a} is {@null} and throws</span>
 <span class="source-line-no">529</span><span id="line-529">     *  a</span>
 <span class="source-line-no">530</span><span id="line-530">     *  {@link NullPointerException}</span>
-<span class="source-line-no">531</span><span id="line-531">     *  with the specified message if it is {@code null}. Calls</span>
+<span class="source-line-no">531</span><span id="line-531">     *  with the specified message if it is {@null}. Calls</span>
 <span class="source-line-no">532</span><span id="line-532">     *  {@link java.util.Objects#requireNonNull(Object, String)}</span>
 <span class="source-line-no">533</span><span id="line-533">     *  internally.</span>
 <span class="source-line-no">534</span><span id="line-534">     *</span>
 <span class="source-line-no">535</span><span id="line-535">     *  @param  &lt;T&gt; The type of the value to check.</span>
 <span class="source-line-no">536</span><span id="line-536">     *  @param  a   The value to check.</span>
 <span class="source-line-no">537</span><span id="line-537">     *  @param  message The message that is set to the thrown exception.</span>
-<span class="source-line-no">538</span><span id="line-538">     *  @return The value if it is not {@code null}.</span>
-<span class="source-line-no">539</span><span id="line-539">     *  @throws NullPointerException   {@code a} is {@code null}.</span>
+<span class="source-line-no">538</span><span id="line-538">     *  @return The value if it is not {@null}.</span>
+<span class="source-line-no">539</span><span id="line-539">     *  @throws NullPointerException   {@code a} is {@null}.</span>
 <span class="source-line-no">540</span><span id="line-540">     */</span>
 <span class="source-line-no">541</span><span id="line-541">    @API( status = STABLE, since = "0.0.5" )</span>
 <span class="source-line-no">542</span><span id="line-542">    public static final &lt;T&gt; T requireNonNull( final T a, final String message ) { return java.util.Objects.requireNonNull( a, message ); }</span>
 <span class="source-line-no">543</span><span id="line-543"></span>
 <span class="source-line-no">544</span><span id="line-544">    /**</span>
-<span class="source-line-no">545</span><span id="line-545">     *  Checks if the given argument {@code a} is {@code null} and throws</span>
+<span class="source-line-no">545</span><span id="line-545">     *  Checks if the given argument {@code a} is {@null} and throws</span>
 <span class="source-line-no">546</span><span id="line-546">     *  a</span>
 <span class="source-line-no">547</span><span id="line-547">     *  {@link NullPointerException}</span>
-<span class="source-line-no">548</span><span id="line-548">     *  if it is {@code null}.</span>
+<span class="source-line-no">548</span><span id="line-548">     *  if it is {@null}.</span>
 <span class="source-line-no">549</span><span id="line-549">     *</span>
 <span class="source-line-no">550</span><span id="line-550">     *  @param  &lt;T&gt; The type of the argument to check.</span>
 <span class="source-line-no">551</span><span id="line-551">     *  @param  a   The argument to check.</span>
 <span class="source-line-no">552</span><span id="line-552">     *  @param  name    The name of the argument; this is used for the error</span>
 <span class="source-line-no">553</span><span id="line-553">     *      message.</span>
-<span class="source-line-no">554</span><span id="line-554">     *  @return The argument if it is not {@code null}.</span>
+<span class="source-line-no">554</span><span id="line-554">     *  @return The argument if it is not {@null}.</span>
 <span class="source-line-no">555</span><span id="line-555">     *  @throws IllegalArgumentException    {@code name} is empty.</span>
 <span class="source-line-no">556</span><span id="line-556">     *  @throws NullPointerException   {@code name} or {@code a} is</span>
-<span class="source-line-no">557</span><span id="line-557">     *      {@code null}.</span>
+<span class="source-line-no">557</span><span id="line-557">     *      {@null}.</span>
 <span class="source-line-no">558</span><span id="line-558">     */</span>
 <span class="source-line-no">559</span><span id="line-559">    @SuppressWarnings( "ProhibitedExceptionThrown" )</span>
 <span class="source-line-no">560</span><span id="line-560">    @API( status = STABLE, since = "0.0.5" )</span>
@@ -591,10 +591,10 @@
 <span class="source-line-no">578</span><span id="line-578">    }   //  requireNonNullArgument()</span>
 <span class="source-line-no">579</span><span id="line-579"></span>
 <span class="source-line-no">580</span><span id="line-580">    /**</span>
-<span class="source-line-no">581</span><span id="line-581">     *  Checks if the given argument {@code a} is {@code null} or empty</span>
+<span class="source-line-no">581</span><span id="line-581">     *  Checks if the given argument {@code a} is {@null} or empty</span>
 <span class="source-line-no">582</span><span id="line-582">     *  and throws a</span>
 <span class="source-line-no">583</span><span id="line-583">     *  {@link NullPointerException}</span>
-<span class="source-line-no">584</span><span id="line-584">     *  if it is {@code null}, or a</span>
+<span class="source-line-no">584</span><span id="line-584">     *  if it is {@null}, or a</span>
 <span class="source-line-no">585</span><span id="line-585">     *  {@link IllegalArgumentException}</span>
 <span class="source-line-no">586</span><span id="line-586">     *  if it is empty.&lt;br&gt;</span>
 <span class="source-line-no">587</span><span id="line-587">     *  &lt;br&gt;Only Strings, arrays,</span>
@@ -605,7 +605,7 @@
 <span class="source-line-no">592</span><span id="line-592">     *  {@link java.util.Enumeration}</span>
 <span class="source-line-no">593</span><span id="line-593">     *  does not provide an API for the check on emptiness</span>
 <span class="source-line-no">594</span><span id="line-594">     *  ({@link java.util.Enumeration#hasMoreElements() hasMoreElements()}</span>
-<span class="source-line-no">595</span><span id="line-595">     *  will return {@code false} after all elements have been taken from</span>
+<span class="source-line-no">595</span><span id="line-595">     *  will return {@false} after all elements have been taken from</span>
 <span class="source-line-no">596</span><span id="line-596">     *  the {@code Enumeration} instance), the result for arguments of this</span>
 <span class="source-line-no">597</span><span id="line-597">     *  type has to be taken with caution.&lt;br&gt;</span>
 <span class="source-line-no">598</span><span id="line-598">     *  &lt;br&gt;For instances of</span>
@@ -618,12 +618,12 @@
 <span class="source-line-no">605</span><span id="line-605">     *  amount of elements.</span>
 <span class="source-line-no">606</span><span id="line-606">     *</span>
 <span class="source-line-no">607</span><span id="line-607">     *  @param  &lt;T&gt; The type of the argument to check.</span>
-<span class="source-line-no">608</span><span id="line-608">     *  @param  a   The argument to check; may be {@code null}.</span>
+<span class="source-line-no">608</span><span id="line-608">     *  @param  a   The argument to check; may be {@null}.</span>
 <span class="source-line-no">609</span><span id="line-609">     *  @param  name    The name of the argument; this is used for the error</span>
 <span class="source-line-no">610</span><span id="line-610">     *      message.</span>
-<span class="source-line-no">611</span><span id="line-611">     *  @return The argument if it is not {@code null}.</span>
+<span class="source-line-no">611</span><span id="line-611">     *  @return The argument if it is not {@null}.</span>
 <span class="source-line-no">612</span><span id="line-612">     *  @throws NullPointerException   {@code name} or {@code a} is</span>
-<span class="source-line-no">613</span><span id="line-613">     *      {@code null}.</span>
+<span class="source-line-no">613</span><span id="line-613">     *      {@null}.</span>
 <span class="source-line-no">614</span><span id="line-614">     *  @throws IllegalArgumentException   {@code name} or {@code a} is empty.</span>
 <span class="source-line-no">615</span><span id="line-615">     */</span>
 <span class="source-line-no">616</span><span id="line-616">    @SuppressWarnings( {"ProhibitedExceptionThrown", "OverlyComplexMethod"} )</span>
@@ -701,11 +701,11 @@
 <span class="source-line-no">688</span><span id="line-688">     *  @param  lhs The left-hand object.</span>
 <span class="source-line-no">689</span><span id="line-689">     *  @param  rhs The right-hand object.</span>
 <span class="source-line-no">690</span><span id="line-690">     *  @param  testClass   The class that defines the details.</span>
-<span class="source-line-no">691</span><span id="line-691">     *  @param  useTransients   {@code true} if to test transient fields</span>
-<span class="source-line-no">692</span><span id="line-692">     *      also, {@code false} otherwise.</span>
+<span class="source-line-no">691</span><span id="line-691">     *  @param  useTransients   {@true} if to test transient fields</span>
+<span class="source-line-no">692</span><span id="line-692">     *      also, {@false} otherwise.</span>
 <span class="source-line-no">693</span><span id="line-693">     *  @param  excludeFields   Set of field names to exclude from testing.</span>
-<span class="source-line-no">694</span><span id="line-694">     *  @return {@code true} if all relevant fields are equal,</span>
-<span class="source-line-no">695</span><span id="line-695">     *      {@code false} otherwise.</span>
+<span class="source-line-no">694</span><span id="line-694">     *  @return {@true} if all relevant fields are equal,</span>
+<span class="source-line-no">695</span><span id="line-695">     *      {@false} otherwise.</span>
 <span class="source-line-no">696</span><span id="line-696">     */</span>
 <span class="source-line-no">697</span><span id="line-697">    @SuppressWarnings( "OverlyComplexBooleanExpression" )</span>
 <span class="source-line-no">698</span><span id="line-698">    private static boolean testReflective( final Object lhs, final Object rhs, final Class&lt;?&gt; testClass, final boolean useTransients, final Collection&lt;String&gt; excludeFields )</span>
@@ -748,7 +748,7 @@
 <span class="source-line-no">735</span><span id="line-735">     *  {@link String},</span>
 <span class="source-line-no">736</span><span id="line-736">     *  usually by calling its</span>
 <span class="source-line-no">737</span><span id="line-737">     *  {@link Object#toString() toString()}</span>
-<span class="source-line-no">738</span><span id="line-738">     *  method. If the value of the argument is {@code null}, the text</span>
+<span class="source-line-no">738</span><span id="line-738">     *  method. If the value of the argument is {@null}, the text</span>
 <span class="source-line-no">739</span><span id="line-739">     *  &amp;quot;null&amp;quot; will be returned instead. Arrays will be</span>
 <span class="source-line-no">740</span><span id="line-740">     *  converted to a string through calling the respective {@code toString()}</span>
 <span class="source-line-no">741</span><span id="line-741">     *  method from</span>
@@ -760,7 +760,7 @@
 <span class="source-line-no">747</span><span id="line-747">     *  {@link java.util.Calendar}</span>
 <span class="source-line-no">748</span><span id="line-748">     *  will be translated based on the default locale - whatever that is.</span>
 <span class="source-line-no">749</span><span id="line-749">     *</span>
-<span class="source-line-no">750</span><span id="line-750">     *  @param  object  The object; may be {@code null}.</span>
+<span class="source-line-no">750</span><span id="line-750">     *  @param  object  The object; may be {@null}.</span>
 <span class="source-line-no">751</span><span id="line-751">     *  @return The object's string representation.</span>
 <span class="source-line-no">752</span><span id="line-752">     *</span>
 <span class="source-line-no">753</span><span id="line-753">     *  @see java.util.Arrays#toString(boolean[])</span>
@@ -787,7 +787,7 @@
 <span class="source-line-no">774</span><span id="line-774">     *  {@link String},</span>
 <span class="source-line-no">775</span><span id="line-775">     *  usually by calling its</span>
 <span class="source-line-no">776</span><span id="line-776">     *  {@link Object#toString() toString()}</span>
-<span class="source-line-no">777</span><span id="line-777">     *  method. If the value of the argument is {@code null}, the text</span>
+<span class="source-line-no">777</span><span id="line-777">     *  method. If the value of the argument is {@null}, the text</span>
 <span class="source-line-no">778</span><span id="line-778">     *  provided as the {@code nullDefault} argument will be returned instead.</span>
 <span class="source-line-no">779</span><span id="line-779">     *  Arrays will be converted to a string through calling the respective</span>
 <span class="source-line-no">780</span><span id="line-780">     *  {@code toString()} method from</span>
@@ -799,9 +799,9 @@
 <span class="source-line-no">786</span><span id="line-786">     *  {@link java.util.Calendar}</span>
 <span class="source-line-no">787</span><span id="line-787">     *  will be translated based on the default locale - whatever that is.</span>
 <span class="source-line-no">788</span><span id="line-788">     *</span>
-<span class="source-line-no">789</span><span id="line-789">     *  @param  object  The object; may be {@code null}.</span>
+<span class="source-line-no">789</span><span id="line-789">     *  @param  object  The object; may be {@null}.</span>
 <span class="source-line-no">790</span><span id="line-790">     *  @param  nullDefault The text that should be returned if {@code object}</span>
-<span class="source-line-no">791</span><span id="line-791">     *      is {@code null}.</span>
+<span class="source-line-no">791</span><span id="line-791">     *      is {@null}.</span>
 <span class="source-line-no">792</span><span id="line-792">     *  @return The object's string representation.</span>
 <span class="source-line-no">793</span><span id="line-793">     *</span>
 <span class="source-line-no">794</span><span id="line-794">     *  @see java.util.Arrays#toString(boolean[])</span>
